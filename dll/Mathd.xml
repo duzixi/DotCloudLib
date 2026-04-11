@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mathd</name>
+    </assembly>
+    <members>
+        <member name="P:Mathd.Matrix4x4d.determinant">
+            <summary>
+            行列式
+            </summary>
+        </member>
+        <member name="P:Mathd.Matrix4x4d.inverse">
+            <summary>
+            逆矩阵
+            </summary>
+        </member>
+        <member name="P:Mathd.Matrix4x4d.transpose">
+            <summary>
+            转置矩阵
+            </summary>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Determinant(Mathd.Matrix4x4d)">
+            <summary>
+            行列式
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Inverse(Mathd.Matrix4x4d)">
+            <summary>
+            逆矩阵
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.LookAt(Mathd.Vector3d,Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            尚未实现
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Ortho(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            正交矩阵
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="bottom"></param>
+            <param name="top"></param>
+            <param name="zNear"></param>
+            <param name="zFar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Perspective(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            透视矩阵
+            </summary>
+            <param name="fov"></param>
+            <param name="aspect"></param>
+            <param name="zNear"></param>
+            <param name="zFar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Scale(Mathd.Vector3d)">
+            <summary>
+            缩放
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.Transpose(Mathd.Matrix4x4d)">
+            <summary>
+            转置矩阵
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.TRS(Mathd.Vector3d,Mathd.Quaterniond,Mathd.Vector3d)">
+            <summary>
+            平移旋转缩放矩阵
+            </summary>
+            <param name="pos"></param>
+            <param name="q"></param>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.GetColumn(System.Int32)">
+            <summary>
+            获取列
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.GetRow(System.Int32)">
+            <summary>
+            获取行
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.MultiplyPoint(Mathd.Vector3d)">
+            <summary>
+            乘
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.MultiplyPoint3x4(Mathd.Vector3d)">
+            <summary>
+            乘3x4矩阵
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.MultiplyVector(Mathd.Vector3d)">
+            <summary>
+            乘向量
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.SetColumn(System.Int32,Mathd.Vector4d)">
+            <summary>
+            设置列
+            </summary>
+            <param name="i"></param>
+            <param name="v"></param>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.SetRow(System.Int32,Mathd.Vector4d)">
+            <summary>
+            设置行
+            </summary>
+            <param name="i"></param>
+            <param name="v"></param>
+        </member>
+        <member name="M:Mathd.Matrix4x4d.SetTRS(Mathd.Vector3d,Mathd.Quaterniond,Mathd.Vector3d)">
+            <summary>
+            设置平移旋转缩放矩阵
+            </summary>
+            <param name="pos"></param>
+            <param name="q"></param>
+            <param name="s"></param>
+        </member>
+        <member name="M:Mathd.Quaterniond.Angle(Mathd.Quaterniond,Mathd.Quaterniond)">
+            <summary>
+            夹角大小
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.AngleAxis(System.Double,Mathd.Vector3d)">
+            <summary>
+            轴向旋转
+            </summary>
+            <param name="angle"></param>
+            <param name="axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Dot(Mathd.Quaterniond,Mathd.Quaterniond)">
+            <summary>
+            点乘
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Euler(Mathd.Vector3d)">
+            <summary>
+            欧拉角转四元数
+            </summary>
+            <param name="euler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Euler(System.Double,System.Double,System.Double)">
+            <summary>
+            欧拉角转四元数
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.FromToRotation(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            向量间的角度
+            </summary>
+            <param name="fromDirection"></param>
+            <param name="toDirection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Inverse(Mathd.Quaterniond)">
+            <summary>
+            四元数的逆
+            </summary>
+            <param name="rotation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Lerp(Mathd.Quaterniond,Mathd.Quaterniond,System.Double)">
+            <summary>
+            线性插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.LerpUnclamped(Mathd.Quaterniond,Mathd.Quaterniond,System.Double)">
+            <summary>
+            线性插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.LookRotation(Mathd.Vector3d)">
+            <summary>
+            注视旋转
+            </summary>
+            <param name="forward"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.LookRotation(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            注视旋转
+            </summary>
+            <param name="forward"></param>
+            <param name="upwards"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.RotateTowards(Mathd.Quaterniond,Mathd.Quaterniond,System.Double)">
+            <summary>
+            向目标角度旋转
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <param name="maxDegreesDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Slerp(Mathd.Quaterniond,Mathd.Quaterniond,System.Double)">
+            <summary>
+            球形插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.SlerpUnclamped(Mathd.Quaterniond,Mathd.Quaterniond,System.Double)">
+            <summary>
+            球形插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Quaterniond.Set(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            设置四元数
+            </summary>
+            <param name="new_x"></param>
+            <param name="new_y"></param>
+            <param name="new_z"></param>
+            <param name="new_w"></param>
+        </member>
+        <member name="M:Mathd.Quaterniond.SetFromToRotation(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            设置角度
+            </summary>
+            <param name="fromDirection"></param>
+            <param name="toDirection"></param>
+        </member>
+        <member name="M:Mathd.Quaterniond.SetLookRotation(Mathd.Vector3d)">
+            <summary>
+            设置注视旋转
+            </summary>
+            <param name="view"></param>
+        </member>
+        <member name="M:Mathd.Quaterniond.SetLookRotation(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            设置注视旋转
+            </summary>
+            <param name="view"></param>
+            <param name="up"></param>
+        </member>
+        <member name="M:Mathd.Quaterniond.ToAngleAxis(System.Double@,Mathd.Vector3d@)">
+            <summary>
+            转换为角轴
+            </summary>
+            <param name="angle"></param>
+            <param name="axis"></param>
+        </member>
+        <member name="M:Mathd.Vector2d.Angle(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            角度
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.ClampMagnitude(Mathd.Vector2d,System.Double)">
+            <summary>
+            限制距离
+            </summary>
+            <param name="vector"></param>
+            <param name="maxLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Distance(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            距离
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Dot(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            点乘
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Lerp(Mathd.Vector2d,Mathd.Vector2d,System.Double)">
+            <summary>
+            线性插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.LerpUnclamped(Mathd.Vector2d,Mathd.Vector2d,System.Double)">
+            <summary>
+            线性插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Max(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            最大值(X,Y均取最大)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Min(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            最小值(X,Y均取最小)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.MoveTowards(Mathd.Vector2d,Mathd.Vector2d,System.Double)">
+            <summary>
+            向目标点移动
+            </summary>
+            <param name="current"></param>
+            <param name="target"></param>
+            <param name="maxDistanceDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Reflect(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            反射
+            </summary>
+            <param name="inDirection"></param>
+            <param name="inNormal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Scale(Mathd.Vector2d,Mathd.Vector2d)">
+            <summary>
+            缩放
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.SmoothDamp(Mathd.Vector2d,Mathd.Vector2d,Mathd.Vector2d@,System.Double,System.Double,System.Double)">
+            <summary>
+            平滑阻尼
+            </summary>
+            <param name="current"></param>
+            <param name="target"></param>
+            <param name="currentVelocity"></param>
+            <param name="smoothTime"></param>
+            <param name="maxSpeed"></param>
+            <param name="deltaTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.SqrMagnitude(Mathd.Vector2d)">
+            <summary>
+            模长平方
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector2d.Normalize">
+            <summary>
+            单位化
+            </summary>
+        </member>
+        <member name="M:Mathd.Vector2d.Scale(Mathd.Vector2d)">
+            <summary>
+            缩放
+            </summary>
+            <param name="scale"></param>
+        </member>
+        <member name="M:Mathd.Vector2d.Set(System.Double,System.Double)">
+            <summary>
+            设置向量
+            </summary>
+            <param name="newX"></param>
+            <param name="newY"></param>
+        </member>
+        <member name="M:Mathd.Vector3d.Angle(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            夹角大小
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.AngleBetween(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            夹角大小（弧度）
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.ClampMagnitude(Mathd.Vector3d,System.Double)">
+            <summary>
+            距离限制
+            </summary>
+            <param name="vector"></param>
+            <param name="maxLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Cross(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            差乘
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Distance(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            距离
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Dot(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            点乘
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Exclude(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            去除
+            </summary>
+            <param name="excludeThis"></param>
+            <param name="fromThat"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Lerp(Mathd.Vector3d,Mathd.Vector3d,System.Double)">
+            <summary>
+            线性插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.LerpUnclamped(Mathd.Vector3d,Mathd.Vector3d,System.Double)">
+            <summary>
+            线性插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Magnitude(Mathd.Vector3d)">
+            <summary>
+            向量模长
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Max(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            最大值(X,Y,Z均取最大)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Min(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            最小值(X,Y,Z均取最小)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.MoveTowards(Mathd.Vector3d,Mathd.Vector3d,System.Double)">
+            <summary>
+            向目标点移动
+            </summary>
+            <param name="current"></param>
+            <param name="target"></param>
+            <param name="maxDistanceDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Normalize(Mathd.Vector3d)">
+            <summary>
+            单位化
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.OrthoNormalize(Mathd.Vector3d@,Mathd.Vector3d@)">
+            <summary>
+            正交法线
+            </summary>
+            <param name="normal"></param>
+            <param name="tangent"></param>
+        </member>
+        <member name="M:Mathd.Vector3d.OrthoNormalize(Mathd.Vector3d@,Mathd.Vector3d@,Mathd.Vector3d@)">
+            <summary>
+            正交法线
+            </summary>
+            <param name="normal"></param>
+            <param name="tangent"></param>
+            <param name="binormal"></param>
+        </member>
+        <member name="M:Mathd.Vector3d.Project(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            向量投影
+            </summary>
+            <param name="vector"></param>
+            <param name="onNormal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.ProjectOnPlane(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            向量在平面上的投影
+            </summary>
+            <param name="vector"></param>
+            <param name="planeNormal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Reflect(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            反射
+            </summary>
+            <param name="inDirection"></param>
+            <param name="inNormal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.RotateTowards(Mathd.Vector3d,Mathd.Vector3d,System.Double,System.Double)">
+            <summary>
+            向目标向量旋转
+            </summary>
+            <param name="current"></param>
+            <param name="target"></param>
+            <param name="maxRadiansDelta"></param>
+            <param name="maxMagnitudeDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Scale(Mathd.Vector3d,Mathd.Vector3d)">
+            <summary>
+            向量缩放
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Slerp(Mathd.Vector3d,Mathd.Vector3d,System.Double)">
+            <summary>
+            球形插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.SlerpUnclamped(Mathd.Vector3d,Mathd.Vector3d,System.Double)">
+            <summary>
+            球形插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.SqrMagnitude(Mathd.Vector3d)">
+            <summary>
+            模长平方
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector3d.Normalize">
+            <summary>
+            单位化
+            </summary>
+        </member>
+        <member name="M:Mathd.Vector3d.Scale(Mathd.Vector3d)">
+            <summary>
+            缩放
+            </summary>
+            <param name="scale"></param>
+        </member>
+        <member name="M:Mathd.Vector3d.Set(System.Double,System.Double,System.Double)">
+            <summary>
+            设置向量
+            </summary>
+            <param name="new_x"></param>
+            <param name="new_y"></param>
+            <param name="new_z"></param>
+        </member>
+        <member name="T:Mathd.Vector4d">
+            <summary>
+            四维向量 (结构体)
+            </summary>
+        </member>
+        <member name="M:Mathd.Vector4d.Distance(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            距离
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Dot(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            点乘
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Lerp(Mathd.Vector4d,Mathd.Vector4d,System.Single)">
+            <summary>
+            线性插值
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.LerpUnclamped(Mathd.Vector4d,Mathd.Vector4d,System.Double)">
+            <summary>
+            线性插值(无限制)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Magnitude(Mathd.Vector4d)">
+            <summary>
+            向量模长
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Max(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            最大值(X,Y,Z,W均取最大)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Min(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            最小值(X,Y,Z,W均取最小)
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.MoveTowards(Mathd.Vector4d,Mathd.Vector4d,System.Double)">
+            <summary>
+            向目标点移动
+            </summary>
+            <param name="current"></param>
+            <param name="target"></param>
+            <param name="maxDistanceDelta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Normalize(Mathd.Vector4d)">
+            <summary>
+            单位化
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Project(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            向量投影
+            </summary>
+            <param name="vector"></param>
+            <param name="onNormal"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Scale(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            向量缩放
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.SqrMagnitude(Mathd.Vector4d)">
+            <summary>
+            模长平方
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.Normalize">
+            <summary>
+            单位化
+            </summary>
+        </member>
+        <member name="M:Mathd.Vector4d.Scale(Mathd.Vector4d)">
+            <summary>
+            缩放
+            </summary>
+            <param name="scale"></param>
+        </member>
+        <member name="M:Mathd.Vector4d.Set(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            设置向量
+            </summary>
+            <param name="new_x"></param>
+            <param name="new_y"></param>
+            <param name="new_z"></param>
+            <param name="new_w"></param>
+        </member>
+        <member name="M:Mathd.Vector4d.SqrMagnitude">
+            <summary>
+            模长平方
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Addition(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            四维向量相加
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_UnaryNegation(Mathd.Vector4d)">
+            <summary>
+            四维向量取反
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Subtraction(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            四维向量相减
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Multiply(System.Double,Mathd.Vector4d)">
+            <summary>
+            实数 * 四维向量
+            </summary>
+            <param name="d"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Multiply(Mathd.Vector4d,System.Double)">
+            <summary>
+            四维向量 * 实数
+            </summary>
+            <param name="a"></param>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Division(Mathd.Vector4d,System.Double)">
+            <summary>
+            四维向量 / 实数
+            </summary>
+            <param name="a"></param>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Equality(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            判断两个四维向量是否相等
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mathd.Vector4d.op_Inequality(Mathd.Vector4d,Mathd.Vector4d)">
+            <summary>
+            判断两个四维向量是否不等
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

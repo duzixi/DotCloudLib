@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BasicGeometry</name>
+    </assembly>
+    <members>
+        <member name="M:GeoLib.AngleModel.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            角度构造函数
+            </summary>
+            <param name="x">围绕X轴旋转角度</param>
+            <param name="y">围绕Y轴旋转角度</param>
+            <param name="z">围绕Z轴旋转角度</param>
+        </member>
+        <member name="T:GeoLib.BaseGeometry">
+            <summary>
+            基本几何体
+            </summary>
+        </member>
+        <member name="F:GeoLib.BaseGeometry._type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:GeoLib.BaseGeometry._id">
+            <summary>
+            唯一标识
+            </summary>
+        </member>
+        <member name="F:GeoLib.BaseGeometry._centerPoint">
+            <summary>
+            中心点
+            </summary>
+        </member>
+        <member name="F:GeoLib.BaseGeometry._rotateAngle">
+            <summary>
+            旋转角度
+            </summary>
+        </member>
+        <member name="F:GeoLib.BaseGeometry._keyList">
+            <summary>
+            关键点
+            </summary>
+        </member>
+        <member name="M:GeoLib.BaseGeometry.#ctor(GeoLib.PointModel,GeoLib.AngleModel,System.String)">
+            <summary>
+            基本集合体
+            </summary>
+            <param name="_id">唯一标识</param>
+            <param name="_centerPoint">中心点</param>
+            <param name="_rotateAngle">旋转角度</param>
+            <param name="_keyList">关键点</param>
+        </member>
+        <member name="M:GeoLib.BaseGeometry.CreateKeyPoint">
+            <summary>
+            生成关键点
+            </summary>
+        </member>
+        <member name="M:GeoLib.BaseGeometry.Shifting">
+            <summary>
+            位移
+            </summary>
+        </member>
+        <member name="M:GeoLib.BaseGeometry.Rotate">
+            <summary>
+            旋转
+            </summary>
+        </member>
+        <member name="M:GeoLib.BaseGeometry.ToGeometryDistance">
+            <summary>
+            同另一个几何体距离
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GeoLib.constHelper">
+            <summary>
+            公共变量定义
+            </summary>
+        </member>
+        <member name="T:GeoLib.constHelper.GeometryType">
+            <summary>
+            集合体类型
+            </summary>
+        </member>
+        <member name="F:GeoLib.constHelper.GeometryType.Cuboid">
+            <summary>
+            长方体
+            </summary>
+        </member>
+        <member name="F:GeoLib.constHelper.GeometryType.Clylinder">
+            <summary>
+            圆柱
+            </summary>
+        </member>
+        <member name="F:GeoLib.constHelper.GeometryType.Line">
+            <summary>
+            线段
+            </summary>
+        </member>
+        <member name="F:GeoLib.constHelper.GeometryType.Point">
+            <summary>
+            点
+            </summary>
+        </member>
+        <member name="M:GeoLib.ConvertLib.ToDataTableTow(System.Collections.IList)">
+            <summary>    
+            将集合类转换成DataTable    
+            </summary>    
+            <param name="list">集合</param>    
+            <returns></returns>    
+        </member>
+        <member name="M:GeoLib.ConvertLib.ToList``1(System.Data.DataTable)">
+            <summary>    
+            DataTable 转换为List 集合    
+            </summary>    
+            <typeparam name="TResult">类型</typeparam>    
+            <param name="dt">DataTable</param>    
+            <returns></returns>    
+        </member>
+        <member name="M:GeoLib.ConvertLib.SreeenDataTable(System.Data.DataTable,System.String)">
+            <summary>
+            DataRow转换为DataTable
+            </summary>
+            <param name="dt"></param>
+            <param name="strWhere">筛选的条件</param>
+            <returns></returns>
+        </member>
+        <member name="T:GeoLib.CuboidGeometry">
+            <summary>
+            长方体
+            </summary>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.#ctor(GeoLib.PointModel,GeoLib.AngleModel,GeoLib.CuboidSize)">
+            <summary>
+            长方体
+            </summary>
+            <param name="_centerPoint">中心点</param>
+            <param name="_rotateAngle">旋转角度</param>
+            <param name="_size">尺寸</param>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.#ctor(GeoLib.PointModel,GeoLib.AngleModel)">
+            <summary>
+            线段继承用
+            </summary>
+            <param name="_centerPoint">中心点</param>
+            <param name="_rotateAngle">旋转角度</param>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.CreateCuboidKeyPoint(System.Single)">
+            <summary>
+            生成关键点
+            </summary>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.cutX(System.Single)">
+            <summary>
+            分割长（X轴方向）
+            </summary>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.cutY(System.Single)">
+            <summary>
+            分割宽（Y轴方向）
+            </summary>
+            <param name="unit"></param>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.cutZ(System.Single)">
+            <summary>
+            分割高（Z轴方向）
+            </summary>
+            <param name="unit"></param>
+        </member>
+        <member name="M:GeoLib.CuboidGeometry.CutXOY(System.Single)">
+            <summary>
+            分割XOY平面
+            </summary>
+            <param name="unit"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:GeoLib.CuboidGeometry.CutXOZ(System.Single)" -->
+        <!-- Badly formed XML comment ignored for member "M:GeoLib.CuboidGeometry.CutYOZ(System.Single)" -->
+        <member name="T:GeoLib.CylinderGeometry">
+            <summary>
+            圆柱体
+            </summary>
+        </member>
+        <member name="M:GeoLib.CylinderGeometry.#ctor(GeoLib.PointModel,GeoLib.AngleModel,GeoLib.CylinderSize)">
+            <summary>
+            圆柱体
+            </summary>
+            <param name="_centerPoint">中心点</param>
+            <param name="_rotateAngle">旋转角度</param>
+            <param name="_size">尺寸</param>
+        </member>
+        <member name="M:GeoLib.CylinderGeometry.CreateCylinderKeyPoint(System.Single)">
+            <summary>
+            生成关键点
+            </summary>
+        </member>
+        <member name="T:GeoLib.LineGeometry">
+            <summary>
+            线段
+            </summary>
+        </member>
+        <member name="M:GeoLib.LineGeometry.#ctor(GeoLib.PointModel,GeoLib.AngleModel,GeoLib.LineSize)">
+            <summary>
+            线段
+            </summary>
+            <param name="_centerPoint">中心点</param>
+            <param name="_rotateAngle">旋转角度</param>
+            <param name="_size">尺寸</param>
+        </member>
+        <member name="M:GeoLib.LineGeometry.CreateLineKeyPoint(System.Single)">
+            <summary>
+            生成关键点
+            </summary>
+        </member>
+        <member name="M:GeoLib.PointGeometry.#ctor(GeoLib.PointModel)">
+            <summary>
+            点构造函数
+            </summary>
+            <param name="x">X坐标</param>
+            <param name="y">Y坐标</param>
+            <param name="z">Z坐标</param>
+        </member>
+        <member name="M:GeoLib.PointGeometry.ToPointDistance(GeoLib.PointModel)">
+            <summary>
+            同另一个点距离
+            </summary>
+            <param name="point">另一个点坐标</param>
+            <returns></returns>
+        </member>
+        <member name="T:GeoLib.RTMatrix">
+            <summary>
+            旋转平移矩阵
+            </summary>
+        </member>
+        <member name="M:GeoLib.RTMatrix.#ctor(GeoLib.PointModel)">
+             <summary>
+                               x                       x
+            将关键点相对坐标 [ y ]转化成齐次矩阵形式 [ y ]
+                               z                       z
+                                                       1
+             </summary>
+             <param name="keyPoint"></param>
+        </member>
+        <member name="M:GeoLib.RTMatrix.#ctor(GeoLib.PointModel,GeoLib.CuboidSize)">
+             <summary>
+                               x                                 x
+            将关键点相对坐标 [ y ]转化成绝对坐标的齐次矩阵形式 [ y ]
+                               z                                 z
+                                                                 1
+             </summary>
+             <param name="keyPoint"></param>
+             <param name="cuboidSize"></param>
+        </member>
+        <member name="M:GeoLib.RTMatrix.#ctor(GeoLib.AngleModel,GeoLib.PointModel)">
+            <summary>
+            构造 4*4 大小的旋转平移矩阵 
+            </summary>
+            <param name="rotationAngle"></param>
+            <param name="Position"></param>
+        </member>
+        <member name="P:GeoLib.RTMatrix.Item(System.Int32,System.Int32)">
+            <summary>
+            通过下标索引取二维
+            </summary>
+            <param name="row"></param>
+            <param name="col"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GeoLib.CuboidSize">
+            <summary>
+            长方体尺寸
+            </summary>
+        </member>
+        <member name="M:GeoLib.CuboidSize.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            尺寸
+            </summary>
+            <param name="_l">长</param>
+            <param name="_w">宽</param>
+            <param name="_h">高</param>
+        </member>
+        <member name="T:GeoLib.CylinderSize">
+            <summary>
+            圆柱体尺寸
+            </summary>
+        </member>
+        <member name="M:GeoLib.CylinderSize.#ctor(System.Single,System.Single)">
+            <summary>
+            尺寸
+            </summary>
+            <param name="_r">半径</param>
+            <param name="_h">高度</param>
+        </member>
+        <member name="T:GeoLib.LineSize">
+            <summary>
+            线段尺寸
+            </summary>
+        </member>
+        <member name="M:GeoLib.LineSize.#ctor(System.Single)">
+            <summary>
+            尺寸
+            </summary>
+            <param name="_l">长</param>
+        </member>
+    </members>
+</doc>

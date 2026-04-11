@@ -1,0 +1,4256 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotCloudLib</name>
+    </assembly>
+    <members>
+        <member name="F:DotCloudLib.DotNumber.Zero">
+            <summary>
+            0
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotNumber.One">
+            <summary>
+            1
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotNumber.Two">
+            <summary>
+            2
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotNumber.Number">
+            <summary>
+            当前数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotNumber.Numbers">
+            <summary>
+            每一位数字
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotNumber.DigitsCount">
+            <summary>
+            整数位数
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotNumber.#ctor(System.Int32,System.Single,System.Single)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="n"></param>
+            <param name="unitWidth"></param>
+            <param name="unitHeight"></param>
+        </member>
+        <member name="M:DotCloudLib.DotNumber.Visualize(System.Int32,System.Single)">
+            <summary>
+            单一数字可视化
+            </summary>
+            <param name="n"></param>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotNumber.Visualize(DotCloudLib.ZXPoint,System.Single,System.Single)">
+            <summary>
+            一串整数可视化
+            </summary>
+            <param name="pos"></param>
+            <param name="spanX"></param>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.DotPara">
+            <summary>
+            平行四边形类
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPara.#ctor(DotCloudLib.ZXSegment,Mathd.Vector2d)">
+            <summary>
+            构造平行四边形（使用条件：四点不可共线）
+            </summary>
+            <param name="basePos"></param>
+            <param name="move"></param>
+        </member>
+        <member name="P:DotCloudLib.DotPara.Points">
+            <summary>
+            平行四边形四个点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPara.Area">
+            <summary>
+            计算平行四边形的面积
+            </summary>
+            <returns>面积值</returns>
+            <exception cref="T:System.InvalidOperationException">当顶点数量不足或无法构成平行四边形时抛出</exception>
+        </member>
+        <member name="T:DotCloudLib.DotPolygon">
+            <summary>
+            多边形
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.#ctor(DotCloudLib.DotPolygon)">
+            <summary>
+            构造方法 —— 深拷贝
+            </summary>
+            <param name="poly"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.#ctor(System.Collections.Generic.List{DotCloudLib.ZXPoint},System.Boolean)">
+            <summary>
+            构造方法 —— 关键点（不排序）
+            </summary>
+            <param name="points">多边形关键点</param>
+            <param name="translate">是否按中心点平移（默认，不平移）</param>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.#ctor(DotCloudLib.ZXPointSet,System.Single,System.Single)">
+            <summary>
+            构造方法 —— 连续点集（平移、重新排序、压缩提取拐点）
+            </summary>
+            <param name="psIN">多边形点云</param>
+            <param name="p_t">拐点系数</param>
+            <param name="p_d">相近点删除系数</param> 
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.#ctor(DotCloudLib.ZXBoundary)">
+            <summary>
+            构造方法 ——— AABB包围盒转多边形
+            </summary>
+            <param name="bound"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.#ctor(DotCloudLib.ZXPoint,System.Single,System.Int32)">
+            <summary>
+            构造方法 —— 圆形转为多边形
+            </summary>
+            <param name="p_r"></param>
+            <param name="p_unitAngle"></param>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.OX">
+            <summary>
+            多边形中心点X
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.OY">
+            <summary>
+            多边形中心点Y
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.OZ">
+            <summary>
+            多边形中心点Z
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.Center">
+            <summary>
+            获取多边形中心点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.Points">
+            <summary>
+            关键点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.Edges">
+            <summary>
+            多边形边【未完待续】
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.NearestPoint">
+            <summary>
+            求离原点最近的点（转绝对坐标）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.FarthestPoint">
+            <summary>
+            求离原点最远的点（转绝对坐标）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.Area">
+            <summary>
+            多边形面积（注：不会自动计算，需要先调用）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPolygon.Boundary">
+            <summary>
+            多边形包围盒
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.MaxDistance(DotCloudLib.ZXPoint@)">
+            <summary>
+            平面距离舱口中心最远距离
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.MinDistance(DotCloudLib.ZXPoint@)">
+            <summary>
+            平面距离舱口中心最近距离及点坐标
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ContainXY(DotCloudLib.ZXPoint)">
+            <summary>
+            判断点是否在多边形内 2025.09.15 duzixi 修改BUG
+            </summary>
+            <param name="point">点坐标(绝对坐标系)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ContainXY(DotCloudLib.ZXSegment)">
+            <summary>
+            多边形是否包含线段（使用条件：线段已切碎）
+            </summary>
+            <param name="edge"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ContainXY(DotCloudLib.DotPolygon)">
+            <summary>
+            判断一个多边形是否完全包含另一个多边形【未完待续】必要不充分条件
+            </summary>
+            <param name="poly">另一个多边形</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IntersectXY(DotCloudLib.ZXSegment,System.Collections.Generic.List{DotCloudLib.ZXPoint}@)">
+            <summary>
+            求多边形与线段交点 2025.09.25 duzixi 改 转为全局坐标系 2025.09.28 duzixi 改 判定是否相交
+            </summary>
+            <param name="segment">目标线段</param>
+            <param name="points">交点(可为多个)</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IntersectXY(DotCloudLib.DotPolygon,System.Collections.Generic.List{DotCloudLib.ZXPoint}@)">
+            <summary>
+            判断多边形与多边形是否相交，如果相交返回交点 by 杨波 2025.09.12
+            </summary>
+            <param name="poly">多边形</param>
+            <param name="points">交点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IntersectXY(DotCloudLib.DotPolygon,System.Collections.Generic.List{DotCloudLib.DotPolygon.IntersectionInfo}@)">
+            <summary>
+            判断多边形与多边形是否相交，如果相交返回交点 by duzixi from lxm 2025.10.06
+            </summary>
+            <param name="poly"></param>
+            <param name="points"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IsPointDuplicate(System.Collections.Generic.List{DotCloudLib.ZXPoint},DotCloudLib.ZXPoint)">
+            <summary>
+            辅助方法：确保交点不为空且未被添加（避免重复点，可调整精度，建议【求多边形与线段交点】方法也同步）
+            </summary>
+            <param name="points">已有的点列表</param>
+            <param name="newPoint">待检测的新点</param>
+            <returns>是否为重复点</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ComputeArea">
+            <summary>
+            计算多边形面积
+            </summary>
+            <returns></returns> 
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.MaxDistance">
+            <summary>
+            多边形内，距离最大的两个点构成一条边
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ComputeGravityCenter">
+            <summary>
+            求多边形重心 Sanngoku 20251023
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.RemoveConcavePoint">
+            <summary>
+            删除凹点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.TransToGlobal">
+            <summary>
+            多边形点转全局坐标系(OX OY OZ 归0)
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.MergeNearPoints(System.Single)">
+            <summary>
+            合并相近点
+            </summary>
+            <param name="p_d">距离小于该值，合并</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.op_Multiply(DotCloudLib.DotPolygon,System.Single)">
+            <summary>
+            多边形按比例放大/缩小（原多边形不变）
+            20251023 Sanngoku 修改
+            </summary>
+            <param name="poly">原多边形</param>
+            <param name="rate">大于1：放大；小于1：缩小</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.op_Multiply(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            多边形交集 by 刘轩名 2025.09.24
+            </summary>
+            <param name="poly1"></param>
+            <param name="poly2"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.op_Addition(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            多边形并集 by 刘轩名 2025.09.24
+            </summary>
+            <param name="poly1"></param>
+            <param name="poly2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.op_Subtraction(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            多边形差集 by 刘轩名 2025.09.24  duzixi改 2025.10.13
+            </summary>
+            <param name="poly1"></param>
+            <param name="poly2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.op_Addition(DotCloudLib.DotPolygon,System.Single)">
+            <summary>
+            多边形缩放 【未完待续】
+            </summary>
+            <param name="poly"></param>
+            <param name="l"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.DotPolygon.IntersectionInfo">
+            <summary>
+            交点信息类
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:DotCloudLib.DotPolygon.FindIntersections(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)" -->
+        <member name="M:DotCloudLib.DotPolygon.IsEndpoint(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint[])">
+            <summary>
+            检查点是否是线段的端点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.InsertIntersections(System.Collections.Generic.List{DotCloudLib.ZXPoint},System.Collections.Generic.List{DotCloudLib.DotPolygon.IntersectionInfo},System.Boolean)">
+            <summary>
+            将交点按照顺序插入到多边形顶点列表中
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.CreateEdges(System.Collections.Generic.List{DotCloudLib.ZXPoint})">
+            <summary>
+            根据顶点列表创建边列表
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IsEdgeInsidePolygon(DotCloudLib.ZXSegment,DotCloudLib.DotPolygon)">
+            <summary>
+            判断边是否在多边形内部
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.IsPointOnSegment(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            判断点是否在线段上
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.BuildPolygonsFromEdges(System.Collections.Generic.List{DotCloudLib.ZXSegment})">
+            <summary>
+            根据边列表构建封闭多边形
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.Up">
+            <summary>
+            求多边形最上点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.Down">
+            <summary>
+            求多边形最下点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.Left">
+            <summary>
+            求多边形最左点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.Right">
+            <summary>
+            求多边形最右点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.MaxArea(System.Collections.Generic.List{DotCloudLib.DotPolygon})">
+            <summary>
+            求面积最大的多边形
+            </summary>
+            <param name="polys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.ToString">
+            <summary>
+            【调试用】多边形字符串输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon.Visualize(System.Boolean,System.Single)">
+            <summary>
+            【调试用】拐点可视化(按绝对坐标)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.DotPolygon_PLC">
+            <summary>
+            【PLC专用】多边形交、并、差算法 by 刘轩名 2025.09.24
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotPolygon_PLC.IntersectionInfo">
+            <summary>
+            交点信息类
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.Intersection(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            计算多边形A与多边形B的交集
+            </summary>
+            <param name="polygonA">多边形A</param>
+            <param name="polygonB">多边形B</param>
+            <returns>交集结果（可能包含多个多边形）</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.Union(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            计算多边形A与多边形B的并集
+            </summary>
+            <param name="polygonA">多边形A</param>
+            <param name="polygonB">多边形B</param>
+            <returns>并集结果（可能包含多个多边形）</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.Difference(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon)">
+            <summary>
+            计算多边形A减去多边形B的差集
+            </summary>
+            <param name="polygonA">多边形A</param>
+            <param name="polygonB">多边形B</param>
+            <returns>差集结果（可能包含多个多边形）</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.FindIntersections(DotCloudLib.DotPolygon,DotCloudLib.DotPolygon,System.Int32@)">
+            <summary>
+            查找两个多边形之间的所有交点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.LineSegmentsIntersect(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint@)">
+            <summary>
+            检查两条线段是否相交，并计算交点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.IsEndpoint(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            检查点是否是线段的端点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.InsertIntersections(DotCloudLib.ZXPoint[],DotCloudLib.DotPolygon_PLC.IntersectionInfo[],System.Int32,System.Boolean,System.Int32@)">
+            <summary>
+            将交点按照顺序插入到多边形顶点列表中
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.DistanceSquared(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            计算两点之间距离的平方
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.CreateEdges(DotCloudLib.ZXPoint[],System.Int32,System.Int32@)">
+            <summary>
+            根据顶点列表创建边列表
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.IsEdgeInsidePolygon(DotCloudLib.ZXSegment,DotCloudLib.DotPolygon)">
+            <summary>
+            判断边是否在多边形内部
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.IsPointInsidePolygon(DotCloudLib.ZXPoint,DotCloudLib.DotPolygon)">
+            <summary>
+            判断点是否在多边形内部（使用射线法）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.IsPointOnSegment(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            判断点是否在线段上
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPolygon_PLC.BuildPolygonsFromEdges(DotCloudLib.ZXSegment[],System.Int32)">
+            <summary>
+            根据边列表构建封闭多边形
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.CurveFit">
+            <summary>
+            曲线拟合
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.CurveFit.factor">
+            <summary>
+            拟合后的方程系数
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.CurveFit.ssr">
+            <summary>
+            回归平方和
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.CurveFit.sse">
+            <summary>
+            剩余平方和
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.CurveFit.rmse">
+            <summary>
+            RMSE均方根误差
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.CurveFit.fitedYs">
+            <summary>
+            存放拟合后的y值，在拟合时可设置为不保存节省内存
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.CurveFit.polyfit(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            多项式拟合
+            </summary>
+            <param name="x">X坐标</param>
+            <param name="y">Y坐标</param>
+            <param name="length">长度</param>
+            <param name="poly_n">N</param>
+            <param name="isSaveFitYs"></param>
+        </member>
+        <member name="M:DotCloudLib.CurveFit.calcError(System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double},System.Int32,System.Boolean)">
+            <summary>
+            计算损失
+            </summary>
+            <param name="x">X坐标</param>
+            <param name="y">Y坐标</param>
+            <param name="length"></param>
+            <param name="isSaveFitYs"></param>
+        </member>
+        <member name="M:DotCloudLib.CurveFit.getY(System.Double)">
+            <summary>
+            获取Y值
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.CurveFit.gauss_solve(System.Int32,System.Collections.Generic.List{System.Double},System.Collections.Generic.List{System.Double})">
+            <summary>
+            高斯求解
+            </summary>
+            <param name="n"></param>
+            <param name="A"></param>
+            <param name="b"></param>
+        </member>
+        <member name="T:DotCloudLib.DotDebug">
+            <summary>
+            调试工具类
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDebug.LogPath">
+            <summary>
+            Log路径
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.#ctor(System.String)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="p_logPath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.SetLogPath(System.String)">
+            <summary>
+            重新设置Log Path
+            </summary>
+            <param name="p_logPath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.ClearLogPath">
+            <summary>
+            清除LOG文件路径（不再输出）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDebug.DebugMode">
+            <summary>
+            判别是否是调试模式
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.Log(System.String)">
+            <summary>
+            【记录模式】写入LOG文件
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.Debug(System.String)">
+            <summary>
+            【调试模式】控制台打印，并写入LOG文件
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:DotCloudLib.DotDebug.Error(System.String)">
+            <summary>
+            【错误模式】错误提示一条龙服务
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:DotCloudLib.DotDigger">
+            <summary>
+            取料机构点云
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotDigger.DiggerType">
+            <summary>
+            类型枚举
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotDigger.DiggerType.Custom">
+            <summary>
+            自定义任意形状
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotDigger.DiggerType.Wheel">
+            <summary>
+            斗轮
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotDigger.DiggerType.Chain">
+            <summary>
+            链斗
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotDigger.DiggerType.Grab">
+            <summary>
+            抓斗
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotDigger.DiggerType.Box">
+            <summary>
+            长方形
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDigger.Points">
+            <summary>
+            取料机构点云模型
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDigger.Position">
+            <summary>
+            中心点（基准点位置）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDigger.Alfa">
+            <summary>
+            第一旋转角（单位：角度。与设备类型相关）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDigger.Beta">
+            <summary>
+            第二旋转角（单位：角度。与设备类型相关）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotDigger.Gama">
+            <summary>
+            第三旋转角（单位：角度。与设备类型相关）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotDigger.SetPose(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            设置斗轮位姿
+            </summary>
+            <param name="x">X</param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <param name="alfa"></param>
+        </member>
+        <member name="M:DotCloudLib.DotDigger.GetGlobalPoints">
+            <summary>
+            获取全局点坐标
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotDigger.#ctor(DotCloudLib.ZXPointSet)">
+            <summary>
+            构造方法——用点云定义任意形态的挖掘机构
+            </summary>
+            <param name="p_pointSet">点云定义的任意形态</param>
+        </member>
+        <member name="M:DotCloudLib.DotDigger.#ctor(System.String)">
+            <summary>
+            构造方法——根据本地点云文件创建取料机构对象模型
+            </summary>
+            <param name="p_filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotDigger.#ctor(DotCloudLib.DotDigger.DiggerType,System.Single,System.Single[])">
+            <summary>
+            构造方法——根据类型定义取料机构
+            </summary>
+            <param name="type">取料机构类型</param>
+            <param name="p_unit">格网精度</param>
+            <param name="p_params">参数列表 斗轮[半径，宽度]</param>
+        </member>
+        <member name="T:DotCloudLib.DotFilter">
+            <summary>
+            点云滤波工具类
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotFilter.Edge(DotCloudLib.ZXPointSet)">
+            <summary>
+            提取边缘
+            </summary>
+            <param name="orgPointSet">满秩阵</param>
+            <returns>边缘点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotFilter.Gaussian(DotCloudLib.ZXPointSet,System.Int32)">
+            <summary>
+            高斯滤波 Sanngoku 20251027
+            </summary>
+            <param name="orgPointSet"></param>
+            <param name="radius">滤波半径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotFilter.GenerateGaussianKernel(System.Int32,System.Double)">
+            <summary>
+            生成归一化的高斯核
+            </summary>
+            <param name="size">核大小（必须为奇数）</param>
+            <param name="sigma">高斯函数标准差</param>
+            <returns>归一化后的高斯核</returns>
+        </member>
+        <member name="T:DotCloudLib.DotInsert">
+            <summary>
+            点云插入工具类
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.CompleteInventory(DotCloudLib.ZXPointSet,System.Single,System.Single,System.Single)">
+            <summary>
+            条形料堆 盘库扫描二次补全
+            安息角插值算法 [专利号：2018052952.3]
+            <param name="orgPointSet">原始缓存点云->补全后点云</param>
+            <param name="p_minY">二次补全后 起始Y坐标</param>
+            <param name="p_maxY">二次补全后 终止Y坐标</param>
+            <param name="p_minZ">地面基准高度 默认为0</param>
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.CompleteReclaim(DotCloudLib.DotPile@,DotCloudLib.ZXPointSet)">
+            <summary>
+            条形料堆 取料扫描二次补全
+            </summary>
+            <param name="p_pile">目标区域原有料型</param>
+            <param name="zXPoints">更新点云</param>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.CompleteStack(DotCloudLib.DotPile@,DotCloudLib.ZXPointSet)">
+            <summary>
+            条形料堆 堆料扫描二次补全(一)
+            </summary>
+            <param name="p_pile">目标区域原有料型，取自数据库，多余区域点将被截掉</param>
+            <param name="p_newPoints">更新点云，注：Y坐标按料条偏移量偏移</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.CompleteStack(DotCloudLib.DotPile@,DotCloudLib.ZXPointSet,DotCloudLib.ZXPoint)">
+            <summary>
+            条形料堆 堆料扫描二次补全(二)
+            </summary>
+            <param name="p_pile">目标区域原有料型</param>
+            <param name="zXPoints">更新点云</param>
+            <param name="stackPoint">堆料点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.MidValue(DotCloudLib.ZXPointSet@,System.Int32,System.Int32)">
+            <summary>
+            中值插值算法
+            使用条件：满点阵
+            </summary>
+            <param name="orgPointSet">空点高程为极小值的满点阵</param>
+            <param name="p_r">半径参数</param>
+            <param name="p_n">周边点数阈值，周围点数过少，认为没有参考价值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.Cross(DotCloudLib.ZXPointSet@,System.Int32)">
+            <summary>
+            十字内插法：以当前点为中心，以半径p_r为界限寻找上下左右点，若横纵都有则取线性插值的平均值，否则取一个插值
+            </summary>
+            <param name="orgPointSet">原始点云</param>
+            <param name="p_r">搜索范围</param>
+            <returns>是否正确</returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByUnit(DotCloudLib.ZXPointSet,System.Single,System.Single,System.Single)">
+            <summary>
+            指定精度插值  by { 刘轩名 }
+            </summary>
+            <param name="orgPointSet">原始点云</param>
+            <param name="_unit">目标精度</param>
+            <param name="_minX">最小x范围（精度：与原始输入点云精度相同）</param>
+            <param name="_maxX">最大x范围（精度：与原始输入点云精度相同）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.Expansion(DotCloudLib.ZXPointSet@,System.Int32,System.Int32)">
+            <summary>
+            二维图像膨胀插值算法
+            内部配合邻接高点的估算方法使用（点方位，内插、外插）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByStopAngle(DotCloudLib.ZXPoint,System.Single,System.Single)">
+            <summary>
+            安息角插点（俯视图）
+            </summary>
+            <param name="keyPoint">始点</param>
+            <param name="p_offsetY">Y方向插值偏移量 正：向上插入  负：向下插入</param>
+            <param name="p_minZ">地面高度：默认为0</param>
+            <returns>插入点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByStopAngleY(DotCloudLib.ZXPointSet,System.Single)">
+            <summary>
+            点云上下边缘安息角插值 2025.09.29
+            </summary>
+            <param name="ps">待插点云</param>
+            <param name="p_minZ">最低点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByStopAngleX(DotCloudLib.ZXPointSet,System.Single)">
+            <summary>
+            点云左右边缘安息角插值 2025.10.27
+            </summary>
+            <param name="ps">待插点云</param>
+            <param name="p_minZ">最低点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByStopAngleX(DotCloudLib.ZXPoint,System.Single,System.Single)">
+            <summary>
+            安息角插点 ———— X方向（俯视图）
+            </summary>
+            <param name="keyPoint">始点</param>
+            <param name="p_offsetX">Y方向插值偏移量 正：向右插入  负：向左插入</param>
+            <param name="p_minZ">地面高度：默认为0</param>
+            <returns>插入点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.TurnToFull(DotCloudLib.ZXPointSet@)">
+            <summary>
+            原点云替换为满秩阵
+            </summary>
+            <param name="orgPointSet"></param>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByX(DotCloudLib.ZXPointSet@,System.Int32)">
+            <summary>
+            X轴内插法 - Sanngoku 20220705
+            </summary>
+            <param name="orgPointSet">原始点</param>
+            <param name="p_r">最大相邻点搜索半径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByX(DotCloudLib.ZXPointSet@,System.Int32,System.Single)">
+            <summary>
+            X轴内插法 - Sanngoku 20220705
+            </summary>
+            <param name="orgPointSet">原始点</param>
+            <param name="p_r">最大相邻点搜索半径</param>
+            <param name="_unit">指定插值精度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.ByY(DotCloudLib.ZXPointSet@,System.Int32)">
+            <summary>
+            按Y轴方向插值 - duzixi Ver.1.0.2 2023.04.19 
+            </summary>
+            <param name="orgPointSet"></param>
+            <param name="p_r">最大相邻点搜索半径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.InsertLine(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,System.Single)">
+            <summary>
+            两点间按照指定精度添加线段点集 - Sanngoku 20220705  duzixi 2025.07.15
+            </summary>
+            <param name="_pt0">端点0</param>
+            <param name="_pt1">端点1</param>
+            <param name="_unit">精度</param>
+            <returns>两点间所添加点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.InsertCircle(DotCloudLib.ZXPoint,System.Single,DotCloudLib.PlaneType,System.Single)">
+            <summary>
+            插入圆
+            </summary>
+            <param name="_p0">圆心</param>
+            <param name="_r">半径</param>
+            <param name="_type">朝向</param>
+            <param name="_angleUnit">角分辨率</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotInsert.InsertPoint(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,System.Int32)">
+            <summary>
+            两点之间线性插点
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="_num"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.Dir">
+            <summary>
+            格网方位（按料堆俯视图）
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.Current">
+            <summary>
+            当前位置
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.Left">
+            <summary>
+            左边
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.Up">
+            <summary>
+            上边
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.Right">
+            <summary>
+            右边
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.Down">
+            <summary>
+            下边
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.LeftUp">
+            <summary>
+            左上
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.RightUp">
+            <summary>
+            右上
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.RightDown">
+            <summary>
+            右下
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Dir.LeftDown">
+            <summary>
+            左下
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotPile">
+            <summary>
+            料堆
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPile.Id">
+            <summary>
+            唯一编码
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPile.Message">
+            <summary>
+            向外传送消息
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPile.SimulatedHandler">
+            <summary>
+            仿真后变化事件
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor">
+            <summary>
+            ctor.
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(DotCloudLib.DotPile)">
+            <summary>
+            7
+            </summary>
+            <param name="p_pile"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（空料堆）初始化每个点的高度为0
+            </summary>
+            <param name="p_minX">料条起始位</param>
+            <param name="p_maxX">料条终止位</param>
+            <param name="p_minY">近机点</param>
+            <param name="p_maxY">远机点</param>
+            <param name="p_minZ">地面高度</param>
+            <param name="p_maxZ">最高高度</param>
+            <param name="p_unit">格网精度</param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(DotCloudLib.ZXBoundary,System.Single)">
+            <summary>
+            构造方法（空料堆）初始化每个点高度为0
+            </summary>
+            <param name="p_b">料堆包围盒</param>
+            <param name="p_unit">格网精度</param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(DotCloudLib.ZXBoundary,System.Single,System.Single)">
+            <summary>
+            构造方法（空料堆）初始化每个点高度为 p_h  2022.07.30
+            </summary>
+            <param name="p_b">料堆包围盒</param>
+            <param name="p_h">空料堆初始化高度</param>
+            <param name="p_unit">格网精度</param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(System.String,DotCloudLib.PointFormat,System.Single)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="p_filePath">格网化后的料堆数据文件路径</param>
+            <param name="p_format">点数据格式</param>
+            <param name="p_unit"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(System.Int32,System.Int32,System.Single,System.Single[])">
+            <summary>
+            构造方法 (一维高程数组)
+            假设：l = 7, w = 5, 那么 heights.Length 一定为 35（否则报错）
+            料堆格网点 俯视图 下标如下：index = i(0 ~ 6) * w(5) + j (0 ~ 4)
+            Y 
+            4 9 14 19 24 29 34
+            3 8 13 18 23 28 33
+            2 7 12 17 22 27 32
+            1 6 11 16 21 26 31
+            0 5 10 15 20 25 30  X方向  
+            </summary>
+            <param name="p_l">X方向点数</param>
+            <param name="p_w">Y方向点数</param>
+            <param name="p_unit">格网精度（左右、上下两点间距离）</param>
+            <param name="heights">高程值数组</param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.#ctor(System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Single[])">
+            <summary>
+            构造方法 (一维高程数组)
+            假设：l = 7, w = 5, 那么 heights.Length 一定为 35（否则报错）
+            料堆格网点 俯视图 下标如下：index = i(0 ~ 6) * w(5) + j (0 ~ 4)
+            </summary>
+            <param name="minX"></param>
+            <param name="minY"></param>
+            <param name="p_l"></param>
+            <param name="p_w"></param>
+            <param name="p_unit"></param>
+            <param name="heights"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SetOffset(DotCloudLib.AxisType,System.Single)">
+            <summary>
+            偏移料堆
+            </summary>
+            <param name="_axisType">偏移轴</param>
+            <param name="_offset">偏移量</param>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SearchBestGrabPoint(DotCloudLib.DotDigger,System.Single,System.Single)">
+            <summary>
+            【废弃】寻找抓斗最佳抓料点（方案一）高精度，低性能
+            </summary>
+            <param name="digger">取料机构模型</param>
+            <param name="p_xOffset">X方向搜索起止偏移量</param>
+            <param name="p_yOffset">Y方向搜索起止偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByHeight(System.Double,DotCloudLib.ZXPoint,System.Boolean,DotCloudLib.ZXBoundary)">
+            <summary>
+            堆料仿真（一）指定高度 
+            假设：p_stackPoint在格网上
+            </summary>
+            <param name="p_targetH">目标高度</param>
+            <param name="p_stackPoint">卸料点</param>
+            <param name="p_change">是否改变原始点</param>
+            <param name="p_obsArea">障碍物范围</param>
+            <returns>体积</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByHeight(System.Double,DotCloudLib.ZXPoint,System.Double,System.Boolean,DotCloudLib.ZXBoundary)">
+            <summary>
+            堆料仿真（一）指定高度 - 圆顶
+            假设：p_stackPoint在格网上
+            </summary>
+            <param name="p_targetH">目标高度</param>
+            <param name="p_stackPoint">卸料点</param>
+            <param name="top_height">圆顶高度</param>
+            <param name="p_change">是否改变原始点</param>
+            <param name="p_obsArea">障碍物范围</param>
+            <returns>体积</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByVolume(System.Double,DotCloudLib.ZXPoint,DotCloudLib.ZXBoundary,System.Double)">
+            <summary>
+            堆料仿真（二）指定体积
+            </summary>
+            <param name="p_targetV">指定体积</param>
+            <param name="p_stackPoint">卸料点</param>
+            <param name="p_obsArea">障碍物范围</param>
+            <param name="e">精度：越小精度越高，计算越慢</param>
+            <returns>堆积最高点高度</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByVolume(System.Double,DotCloudLib.ZXPoint,System.Double,DotCloudLib.ZXBoundary,System.Double)">
+            <summary>
+            堆料仿真（二）指定体积
+            </summary>
+            <param name="p_targetV">指定体积</param>
+            <param name="p_stackPoint">卸料点</param>
+            <param name="top_height"></param>
+            <param name="p_obsArea">障碍物范围</param>
+            <param name="e">精度：越小精度越高，计算越慢</param>
+            <returns>堆积最高点高度</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByBoundary(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            堆料仿真（三）指定包围盒 在原有料堆基础上，按标准梯形堆料
+            注：堆料边界不会超出原料堆XY边界，超出部分会自动剔除。返回体积为额外堆部分。
+            </summary>
+            <param name="p_minX">最小X</param>
+            <param name="p_maxX">最大X</param>
+            <param name="p_minY">最小Y</param>
+            <param name="p_maxY">最大Y</param>
+            <param name="p_minZ">最小Z</param>
+            <param name="p_maxZ">最大Z</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimStackByGrab(DotCloudLib.DotDigger,DotCloudLib.ZXPoint,System.Single,DotCloudLib.ZXBoundary)">
+            <summary>
+            抓斗卸料仿真（第二版）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimTake(DotCloudLib.ZXPointSet,System.Boolean)">
+            <summary>
+            取料仿真——任意取料头形状
+            </summary>
+            <param name="digger">取料头表面点云</param>
+            <param name="p_changeOrg">改变原始点云</param>
+            <returns>取料总体积数</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimTake(DotCloudLib.DotDigger,System.Boolean)">
+            <summary>
+            取料仿真
+            </summary>
+            <param name="digger">取料机构对象</param>
+            <param name="p_changeOrg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimTakeByGrab(DotCloudLib.DotDigger,DotCloudLib.ZXPoint@,System.Single,System.Boolean)">
+            <summary>
+            取料仿真——抓斗
+            </summary>
+            <param name="digger">取料机构——抓斗模型</param>
+            <param name="center">取料点（输入输出值）</param>
+            <param name="p_in">抓斗进尺</param>
+            <param name="p_changeOrg"></param>
+            <returns>抓取体积</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.SimSlide(System.Single,System.Single)">
+            <summary>
+            塌料仿真 —— 滑动窗口法 (使用条件：满秩阵)
+            </summary>
+            <param name="p_winR"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.ComputeTakeVolume(DotCloudLib.DotDigger,DotCloudLib.ZXPoint@)">
+            <summary>
+            计算模拟抓取体积
+            </summary>
+            <param name="digger"></param>
+            <param name="center">返回抓取高度</param>
+            <returns>抓取体积</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPile.ComputeValue(System.Single,DotCloudLib.ZXPoint)">
+            <summary>
+            计算评估值
+            </summary>
+            <param name="volume"></param>
+            <param name="center"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.DotPileBase">
+            <summary>
+            料堆基础类
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.#ctor(DotCloudLib.ZXPointSet)">
+            <summary>
+            根据有序点云构造
+            </summary>
+            <param name="ps">有序格网点云</param>
+        </member>
+        <member name="P:DotCloudLib.DotPileBase.Points">
+            <summary>
+            存储点集
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileBase.m_bound">
+            <summary>
+            料型边界
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileBase.Bound">
+            <summary>
+            边界
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileBase.m_unit">
+            <summary>
+            料堆格网精度
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileBase.Unit">
+            <summary>
+            格网精度
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileBase.Z0">
+            <summary>
+            默认基准面高度
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileBase.LengthN">
+            <summary>
+            X方向点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileBase.WidthN">
+            <summary>
+            Y方向点数
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileBase.Alfa">
+            <summary>
+            料堆安息角(单位：度)
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileBase.Volume">
+            <summary>
+            体积
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetVolume(System.Single,System.Single)">
+            <summary>
+            圆形料场根据指定角度计算体积  注：右侧X轴正向为0°, 上侧Y轴正向为0°  角度逆时针递增
+            </summary>
+            <param name="p_angle1">起始角度</param>
+            <param name="p_angle2">终止角度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.Init(System.Single)">
+            <summary>
+            初始化料堆，高度可指定，默认为0
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.Init(System.Single[])">
+            <summary>
+            高程值数组初始化堆料
+            </summary>
+            <param name="p_heights">高程值数组</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SaveAsXYZ(System.String,System.Single)">
+            <summary>
+            保存为XYZ格式
+            </summary>
+            <param name="p_filePath">保存路径</param>
+            <param name="p_minZ">最低点Z值</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SaveAsIXYZ(System.String)">
+            <summary>
+            保存为IXYZ格式
+            </summary>
+            <param name="p_filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SaveAsJSObject(System.String)">
+            <summary>
+            保存为JavaScript对象变量
+            </summary>
+            <param name="p_filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetHeights">
+            <summary>
+            获取高程一维数组float[]（对接Unity3D）
+            </summary>
+            <returns>如果大小不匹配，返回空数组</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetHeights2D">
+            <summary>
+            获取高程二维数组float[,]（对接Unity3D）
+            </summary>
+            <returns>如果大小不匹配，返回空数组</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetHeightsDic(DotCloudLib.ZXBoundary)">
+            <summary>
+            获取高程字典 [index, height] (对接Unity3D)
+            </summary>
+            <param name="p_ROI">限定范围</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SetHeightsDic(System.Collections.Generic.Dictionary{System.Int32,System.Single})">
+            <summary>
+            设置高程字典 [index, height]
+            </summary>
+            <param name="p_points"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetIndex(System.Int32,System.Int32)">
+            <summary>
+            根据二维下标计算点下标 2021.1.25 by dzx
+            </summary>
+            <param name="p_i"></param>
+            <param name="p_j"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetIndex(System.Single,System.Single)">
+            <summary>
+            根据点XY坐标获取格网索引
+            </summary>
+            <param name="p_x"></param>
+            <param name="p_y"></param>
+            <returns>未找到返回-1</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetIndexXY(DotCloudLib.ZXPoint)">
+            <summary>
+            根据点坐标计算料格中的下标
+            </summary>
+            <param name="p"></param>
+            <returns>int[x,y] 如果越界，返回值为-1</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetIndex(System.Int32,DotCloudLib.Dir)">
+            <summary>
+            获取相邻点格网下标
+            </summary>
+            <param name="p_index"></param>
+            <param name="p_dir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetPoint(System.Int32,DotCloudLib.ZXPoint@,DotCloudLib.Dir)">
+            <summary>
+            根据index下标和方位获取点
+            </summary>
+            <param name="p_index">下标</param>
+            <param name="p_point">返回值</param>
+            <param name="p_dir">方向（不做越界校验，依次延续。最下边点的下边会取左边的最上边）</param>
+            <returns>是否越界</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SetPoint(System.Int32,DotCloudLib.ZXPoint,DotCloudLib.Dir)">
+            <summary>
+            根据index下标和方位给点赋值
+            </summary>
+            <param name="p_index">下标</param>
+            <param name="p_point">点坐标</param>
+            <param name="p_dir">方向</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.FlatRate(System.Single)">
+            <summary>
+            平整程度（顶部p_h米与底部p_h米的体积比）
+            </summary>
+            <param name="p_h"></param>
+            <returns>比例值：0 ~ 1 越大约平整</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.IsFlat(System.Single,System.Single)">
+            <summary>
+            判断为平顶料堆
+            </summary>
+            <param name="p_h">判别高度</param>
+            <param name="p_rate">阈值：顶部p_h米与底部p_h米的体积比</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetCrossSection(System.Int32)">
+            <summary>
+            获取指定点横截面
+            创建版本：0.7.6
+            使用前提：满秩阵
+            时间评估：O(sqrt(N))
+            </summary>
+            <param name="indexX">X点下标</param>
+            <returns>横截面点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetVerticalSection(System.Int32)">
+            <summary>
+            获取指定点纵截面 
+            创建版本：0.7.6
+            使用前提：满秩阵
+            时间评估：O(sqrt(N))
+            </summary>
+            <param name="indexY">Y点下表</param>
+            <returns>纵截面点集</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetCrossSection(System.Single)">
+            <summary>
+            获取指定点横截面 
+            创建版本：0.7.6
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetVerticalSection(System.Single)">
+            <summary>
+            获取指定点纵截面 0.7.6
+            </summary>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetCrossSection">
+            <summary>
+            获取中间的横截面 0.7.6
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.GetVerticalSection">
+            <summary>
+            获取中间的纵截面 0.7.6
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.Gridding(System.Single)">
+            <summary>
+            格网化
+            </summary>
+            <param name="p_unit">格网精度</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.UpdateBound">
+            <summary>
+            重新计算边界
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SimSlide(System.Double)">
+            <summary>
+            塌料仿真——全局法
+            </summary>
+            <param name="p_r">严格度  默认值：1</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SimSlide(DotCloudLib.ZXBoundary,System.Double)">
+            <summary>
+            塌料仿真——全局法（局部计算）
+            </summary>
+            <param name="p_ROI">目标计算区域</param>
+            <param name="p_r"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SaveAsObj(System.String,System.Single)">
+            <summary>
+            料堆生成OBJ三维模型
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.ObjRectangle.UpdateBeyond(DotCloudLib.ZXPoint,System.Single)">
+            <summary>
+            用圆心点、半径，更新在圆外的点数组s
+            </summary>
+            <param name="center"></param>
+            <param name="R2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.ObjRectangle.GetPointsOfObjStructure(System.Int32[],System.Collections.Generic.List{DotCloudLib.ZXPoint}@,System.Collections.Generic.List{System.Int64}@)">
+            <summary>
+            计算点插入 每个边只能有一个插点
+            </summary>
+            <param name="insertList">需要插入的点</param>
+            <param name="tempIndexList">需要插入的点的临时ID</param>
+            <returns>按序排列的ID列表，其中需要插入的点为-1占位</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.ObjRectangle.GetNextIndex(System.Int32)">
+            <summary>
+            获取逆时针顺序的下一个序号
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.ObjRectangle.GetFrontIndex(System.Int32)">
+            <summary>
+            获取逆时针顺序的前一个序号
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.ObjRectangle.GetEdgeInsert(System.Int32,System.Int32)">
+            <summary>
+            计算在边上插点
+            </summary>
+            <param name="startIndex"></param>
+            <param name="endIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileBase.SaveAsObjCircle(System.String)">
+            <summary>
+            料堆生成OBJ三维模型（圆形料场底面切割）
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="T:DotCloudLib.DotPileInfo">
+            <summary>
+            堆料信息
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileInfo.Bound">
+            <summary>
+            堆料边界
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileInfo.#ctor(DotCloudLib.ZXBoundary)">
+            <summary>
+            构造体
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotPileLayer">
+            <summary>
+            料层
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotPileLayer.LayerType">
+            <summary>
+            层类型
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLayer.LayerType.UN_KNOWN">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLayer.LayerType.STACK">
+            <summary>
+            堆料层（料型中增加的部分）
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLayer.LayerType.TAKE">
+            <summary>
+            取料层（料型中减少的部分）
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLayer.LayerType.BASE">
+            <summary>
+            底层（去掉料层剩余部分）
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLayer.p_nullZ">
+            <summary>
+            默认情况下，空点赋值为-100
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLayer.Unit">
+            <summary>
+            格网精度
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLayer.TopSurface">
+            <summary>
+            上表面(格网点云)
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLayer.BottomSurface">
+            <summary>
+            下表面(格网点云)
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLayer.Bound">
+            <summary>
+            AABB包围盒
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLayer.Type">
+            <summary>
+            料层类型
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.#ctor">
+            <summary>
+            构造方法——空
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.#ctor(DotCloudLib.DotPile)">
+            <summary>
+            构造方法——一个料堆就是一层
+            </summary>
+            <param name="pile">料堆</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.#ctor(System.Single,DotCloudLib.ZXPointSet,DotCloudLib.ZXPointSet)">
+            <summary>
+            构造方法——已知：格网精度、上下表面格网点云
+            </summary>
+            <param name="p_unit">格网精度</param>
+            <param name="p_topSurface">上表面点云</param>
+            <param name="p_bottomSurface">下表面点云</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.#ctor(DotCloudLib.DotPile,DotCloudLib.DotPile,System.Single,System.Boolean)">
+            <summary>
+            构造方法—— 构造【堆料层】或【取料层】
+            【堆料层】为实体层；【取料层】为虚拟逻辑空间层
+            当构造【堆料层】时，第一个参数为堆料后的料型，第二个参数为堆料前的料型
+            当构造【取料层】时，第一个参数为取料前的料型，第二个参数为取料后的料型
+            创建版本：0.7.6
+            </summary>
+            <param name="p_topSurface">上表面料型</param>
+            <param name="p_bottomSurface">下表面料型</param>
+            <param name="p_deltaH">上下表面之间的最小高差（默认：0.1米）</param>
+            <param name="p_turnToFull">默认转为满点阵，空点不填充需参数指定</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.SplitPileByHeight(DotCloudLib.DotPile,System.Single)">
+            <summary>
+            根据一个指定高度，将一个料堆切割为上下两层
+            </summary>
+            <param name="p_pile">原始料堆</param>
+            <param name="p_height">指定切割高度</param>
+            <returns>上下两个料层；若指定高度不在料堆范围内，直接将料堆作为一个料层返回</returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.SplitPileByHeights(DotCloudLib.DotPile,System.Collections.Generic.List{System.Single})">
+            <summary>
+            根据若干指定高度，将一个料堆切割为多个料层
+            2022.07.29 追加
+            </summary>
+            <param name="p_pile">原始料堆</param>
+            <param name="p_heights">指定切割高度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.GetVolume(System.Single)">
+            <summary>
+            计算料层体积
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileLayer.TurnToFull">
+            <summary>
+            上下表面转化为满秩阵标准型
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.DotPileLine">
+            <summary>
+            料条
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLine.m_piles">
+            <summary>
+            包含的料堆
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLine.Points">
+            <summary>
+            料条点集（未分割的）
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLine.Unit">
+            <summary>
+            格网精度
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.DotPileLine.Bound">
+            <summary>
+            料条边界
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLine.LengthN">
+            <summary>
+            X方向点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLine.WidthN">
+            <summary>
+            Y方向点数
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.GetPoint(System.UInt32,DotCloudLib.ZXPoint@,DotCloudLib.Dir)">
+            <summary>
+            根据index下标和方位获取点
+            </summary>
+            <param name="p_index">下标</param>
+            <param name="p_point">保存最终获取的点</param>
+            <param name="p_dir">方向（不做越界校验，依次延续。最下边点的下边会取左边的最上边）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.#ctor(DotCloudLib.ZXPointSet)">
+            <summary>
+            构造方法
+            已知：处理后的料条点云
+            求：对应的料条对象
+            </summary>
+            <param name="p_points"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.#ctor(DotCloudLib.DotPile)">
+            <summary>
+            构造方法
+            已知：一个料堆
+            求：料条
+            </summary>
+            <param name="p_pile">一个料堆对象</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.#ctor(System.Collections.Generic.List{System.String})">
+            <summary>
+            构造方法
+            </summary>
+            <param name="points">点云数据</param>        
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.#ctor(System.String,DotCloudLib.PointFormat)">
+            <summary>
+            构造方法
+            已知：本地文件名
+            </summary>
+            <param name="p_filePath">文件路径</param>
+            <param name="p_format">点格式</param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Gridding(System.Single)">
+            <summary>
+            格网化
+            </summary>
+            <param name="unit"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.RecognizePiles(System.Single,System.Single)">
+            <summary>
+            自动识别聊条中的堆料
+            </summary>
+            <param name="p_CutHight">等高线高度</param>
+            <param name="p_tSpan">判定分割阈值</param>
+            <returns></returns>
+        </member>
+        <member name="P:DotCloudLib.DotPileLine.Count">
+            <summary>
+            料条中包含料堆数量
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLine.IsReadOnly">
+            <summary>
+            是否为只读
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotPileLine.Item(System.Int32)">
+            <summary>
+            料条中索引形式访问料堆
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.IndexOf(DotCloudLib.DotPile)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Insert(System.Int32,DotCloudLib.DotPile)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.RemoveAt(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Add(DotCloudLib.DotPile)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Clear">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Contains(DotCloudLib.DotPile)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.CopyTo(DotCloudLib.DotPile[],System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.Remove(DotCloudLib.DotPile)">
+            <summary>
+            
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotPileLine.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.DotTrapezoidPile">
+            <summary>
+            梯形料堆
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotTrapezoidPile.R">
+            <summary>
+            梯形料堆最大堆料半径
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotTrapezoidPile.TopW">
+            <summary>
+            梯形料堆上表面宽度（Y方向差）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.DotTrapezoidPile.TopL">
+            <summary>
+            梯形料堆上表面长度（X方向差）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.DotTrapezoidPile.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（理想料堆）
+            </summary>
+            <param name="p_minX">料条起始位</param>
+            <param name="p_maxX">料条终止位</param>
+            <param name="p_minY">近机点</param>
+            <param name="p_maxY">远机点</param>
+            <param name="p_minZ">地面高度</param>
+            <param name="p_maxZ">最高高度</param>
+            <param name="p_unit">格网精度</param>
+        </member>
+        <member name="M:DotCloudLib.DotTrapezoidPile.Check">
+            <summary>
+            参数合法性校验
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.DotTrapezoidPile.CreatePileData">
+            <summary>
+            生成标准梯形料堆格网点云数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.GraphTheory.INode">
+            <summary>
+            节点接口
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.INode.NearTo(DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            相邻
+            </summary>
+            <param name="p_node">比较节点</param>
+            <param name="p_e">临近阈值</param>
+            <returns>是否相邻</returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.INode.IsFlex(DotCloudLib.GraphTheory.INode,DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            是拐点，即节点中心点不在一条直线上
+            </summary>
+            <param name="p_preNode">上一个节点</param>
+            <param name="p_nextNode">下一个节点</param>
+            <param name="p_e">临近阈值</param>
+            <returns>是否是拐点</returns>
+        </member>
+        <member name="T:DotCloudLib.GraphTheory.ZXLink`1">
+            <summary>
+            链表
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXLink`1.Nodes">
+            <summary>
+            链表中按顺序排列的节点 Node0 -> Node1 -> .... Node N
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXLink`1.EndNode">
+            <summary>
+            最后一个节点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXLink`1.Count">
+            <summary>
+            返回链表中节点个数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXLink`1.Energy">
+            <summary>
+            能量
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXLink`1.FlexNum">
+            <summary>
+            折点数量
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXLink`1.#ctor(System.Collections.Generic.List{DotCloudLib.GraphTheory.ZXNode{`0}})">
+            <summary>
+            构造方法-根据节点构建链表
+            </summary>
+            <param name="p_nodes"></param>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXLink`1.Uniquify">
+            <summary>
+            唯一化
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXLink`1.Clear">
+            <summary>
+            清洗
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXLink`1.EqualTo(DotCloudLib.GraphTheory.ZXLink{`0})">
+            <summary>
+            比较两个链表是否相等
+            </summary>
+            <param name="p_link">另一个链表</param>
+            <returns>是否相等</returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXLink`1.ToString">
+            <summary>
+            【调试用】输出链表中的节点ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.GraphTheory.ZXNode`1">
+            <summary>
+            节点类（泛型）
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:DotCloudLib.GraphTheory.ZXNode`1.NodeType">
+            <summary>
+            节点类型
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.GraphTheory.ZXNode`1.NodeType.NONE">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.GraphTheory.ZXNode`1.NodeType.START">
+            <summary>
+            起始
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.GraphTheory.ZXNode`1.NodeType.END">
+            <summary>
+            终止
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.GraphTheory.ZXNode`1.NodeType.OBSTACLE">
+            <summary>
+            障碍
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.GraphTheory.ZXNode`1.counter">
+            <summary>
+            计数器
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.Id">
+            <summary>
+            节点ID
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.isDirty">
+            <summary>
+            是否被搜索
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.isFlex">
+            <summary>
+            是否是拐点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.Type">
+            <summary>
+            搜索过程中节点类型
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.Content">
+            <summary>
+            节点中包含的元素
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXNode`1.Nodes">
+            <summary>
+            相邻节点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXNode`1.#ctor(`0)">
+            <summary>
+            构造节点
+            </summary>
+            <param name="p_content"></param>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXNode`1.FindLinkNodes(System.Collections.Generic.List{DotCloudLib.GraphTheory.ZXNode{`0}})">
+            <summary>
+            搜索邻接节点
+            </summary>
+            <param name="p_nodes">被搜索节点列表</param>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXNode`1.FindLinks(DotCloudLib.GraphTheory.ZXNode{`0},System.Boolean)">
+            <summary>
+            搜索当前节点和目标节点的所有链路
+            </summary>
+            <param name="p_node">目标节点</param>
+            <param name="reverse">是否反向搜索，默认为false，正向搜索</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXNode`1.ToString">
+            <summary>
+            【调试用】输出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.GraphTheory.ZXTrack">
+            <summary>
+            点轨迹
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXTrack.Points">
+            <summary>
+            点集
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXTrack.Count">
+            <summary>
+            点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.GraphTheory.ZXTrack.Message">
+            <summary>
+            反馈给上层的消息提示
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.#ctor(System.Collections.Generic.List{DotCloudLib.ZXPoint})">
+            <summary>
+            构造方法——根据点集构造轨迹
+            </summary>
+            <param name="p_points"></param>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.Uniquify(System.Single)">
+            <summary>
+            唯一化
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.UniquifyXY(System.Single)">
+            <summary>
+            唯一化（判定仅考虑二维，原始点三维信息仍保留）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.GetMinTrack(DotCloudLib.ZXPoint,DotCloudLib.ZXBoundary)">
+            <summary>
+            求二维包围盒外一点，到二维包围盒边的最短垂直路径
+            </summary>
+            <param name="p_point">包围盒外一点</param>
+            <param name="p_bound">二维包围盒</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.SearchBestTrack(DotCloudLib.ZXBoundary,System.Collections.Generic.List{DotCloudLib.ZXBoundary},DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            搜索最佳轨迹
+            </summary>
+            <param name="p_workArea">工作区域</param>
+            <param name="p_safeAreas">安全区数组</param>
+            <param name="p_start">始点</param>
+            <param name="p_end">终点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.ToString">
+            <summary>
+            【调试用】输出轨迹中点序列
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.GraphTheory.ZXTrack.Visualize(System.Single)">
+            <summary>
+            【调试用】可视化为轨迹点集
+            </summary>
+            <param name="p_unit"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.IndicesPoint">
+            <summary>
+            序号特征点
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.IndicesPoint.Index">
+            <summary>
+            点在原始点集中的序号
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.IndicesPoint.xIndex">
+            <summary>
+            点在原始点集中的二维X坐标序号
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.IndicesPoint.yIndex">
+            <summary>
+            点在原始点集中的二维Y坐标序号
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.IndicesPoint.Z">
+            <summary>
+            点的更新后Z值
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.IndicesPoint.BeforeZ">
+            <summary>
+            点在更新前的Z值
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.SimulatedArgs">
+            <summary>
+            仿真后事件参数
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.SimulatedArgs.isChanged">
+            <summary>
+            仿真是否使得点集发生变化
+            若false，则list_points为空容器
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.SimulatedArgs.list_Points">
+            <summary>
+            仿真使得变化的点集
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.SimulatedArgs.Volumn">
+            <summary>
+            仿真使得体积变化量  大于 0 为增， 小于 0 为减
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.ISimable">
+            <summary>
+            可仿真接口 - 特指料堆的可仿真变化行为
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ISimable.SimulatedHandler">
+            <summary>
+            仿真后的变化事件
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.Search.KdNode">
+            <summary>
+            KdTree节点定义
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.index">
+            <summary>
+            当前节点所对应的原始点云序号
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.Point">
+            <summary>
+            节点存储值
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.Axis">
+            <summary>
+            节点分割轴
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.LeftChild">
+            <summary>
+            节点左子节点
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.RightChild">
+            <summary>
+            节点右子节点
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.min">
+            <summary>
+            最小值
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.max">
+            <summary>
+            最大值
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdNode.Parent">
+            <summary>
+            父节点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.Search.KdNode.ToString">
+            <summary>
+            显示字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.Search.SortablePoint">
+            <summary>
+            可排序点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.Search.SortablePoint.index">
+            <summary>
+            下标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.Search.SortablePoint.Point">
+            <summary>
+            点坐标
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.Search.SortablePoint.#ctor(System.Int32,DotCloudLib.ZXPoint)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="index">下标</param>
+            <param name="point">点坐标</param>
+        </member>
+        <member name="T:DotCloudLib.Search.KdTree_Sanngoku">
+            <summary>
+            KdTree
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.Search.KdTree_Sanngoku.Root">
+            <summary>
+            根节点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.Search.KdTree_Sanngoku.Input">
+            <summary>
+            输入点集
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.Search.KdTree_Sanngoku.#ctor(DotCloudLib.ZXPointSet)">
+            <summary>
+            构建树
+            </summary>
+            <param name="pointSet"></param>
+        </member>
+        <member name="M:DotCloudLib.Search.KdTree_Sanngoku.generatePivot(System.Collections.Generic.List{DotCloudLib.Search.SortablePoint})">
+            <summary>
+            选取分割点 - 构建树
+            </summary>
+            <param name="set"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.Search.KdTree_Sanngoku.SearchNeighbour(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            近邻搜索
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <param name="nearestDistance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.Search.KdTree_Sanngoku.ExtractEuclideanClusters(System.Single)">
+            <summary>
+            提取欧式聚类
+            </summary>
+            <param name="distance"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.ZXSegment">
+            <summary>
+            线段
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（三维线段）
+            </summary>
+            <param name="_startX"></param>
+            <param name="_endX"></param>
+            <param name="_startY"></param>
+            <param name="_endY"></param>
+            <param name="_startZ"></param>
+            <param name="_endZ"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.#ctor(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            构造方法（两点）
+            </summary>
+            <param name="_start"></param>
+            <param name="_end"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（二维线段）
+            </summary>
+            <param name="_startX"></param>
+            <param name="_endX"></param>
+            <param name="_startY"></param>
+            <param name="_endY"></param>
+        </member>
+        <member name="P:DotCloudLib.ZXSegment.Id">
+            <summary>
+            线段ID
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXSegment.Length">
+            <summary>
+            线段长度
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXSegment.L">
+            <summary>
+            线段坐标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXSegment.Start">
+            <summary>
+            开始点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXSegment.End">
+            <summary>
+            结束点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.IsNull(System.Single)">
+            <summary>
+            是否为空 
+            </summary>
+            <param name="p_e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.IntersectXY(DotCloudLib.ZXSegment,DotCloudLib.ZXPoint@)">
+            <summary>
+            判断两线段相交
+            </summary>
+            <param name="_zX">线段</param>
+            <param name="_p">交点</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.ToString">
+            <summary>
+            字符串表示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.ToJsonString">
+            <summary>
+            输出json字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXSegment.Visualize(System.Single)">
+            <summary>
+            【调试用】可视化为点集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.CommonLib">
+            <summary>
+            通用库
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.CommonLib.EuclideanDistance(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            欧氏距离
+            </summary>
+            <param name="p0">第1个点</param>
+            <param name="p1">第2个点</param>
+            <returns>两点距离</returns>
+        </member>
+        <member name="M:DotCloudLib.CommonLib.EuclideanDistanceP2(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            欧式距离的平方
+            </summary>
+            <param name="p0">第1个点</param>
+            <param name="p1">第2个点</param>
+            <returns>两点距离平方</returns>
+        </member>
+        <member name="M:DotCloudLib.CommonLib.GetFileStream(System.String)">
+            <summary>
+            获取文件流
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.CommonLib.WriteToFile(System.IO.FileStream,System.String)">
+            <summary>
+            写文件
+            </summary>
+            <param name="fs"></param>
+            <param name="contents"></param>
+        </member>
+        <member name="T:DotCloudLib.LibTool">
+            <summary>
+            库管理器
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.LibTool.DebugMode">
+            <summary>
+            如果当前为调试模式，则输出点集，否则不输出   2025.09.13 +
+            【重要】每次发布前，要改成false
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.LibTool.debug">
+            <summary>
+            当前计算的调试对象
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.LibTool.WriteConsole">
+            <summary>
+            是否输出控制台
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.LibTool.StartLog(System.String)">
+            <summary>
+            开始输出Log
+            </summary>
+            <param name="p_path"></param>
+        </member>
+        <member name="M:DotCloudLib.LibTool.StopLog">
+            <summary>
+            结束输出Log
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.LibTool.Log(System.Object)">
+            <summary>
+            Log文件输出
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:DotCloudLib.LibTool.Debug(System.Object)">
+            <summary>
+            控制台与文件输出
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:DotCloudLib.LibTool.Error(System.Object)">
+            <summary>
+            报错
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="M:DotCloudLib.LibTool.Error(System.Exception,System.String,System.String)">
+            <summary>
+            错误处理
+            </summary>
+            <param name="ex">错误对象</param>
+            <param name="source">代码源</param>
+            <param name="helpLink">辅助信息</param>
+        </member>
+        <member name="M:DotCloudLib.LibTool.ShowLibInfo">
+            <summary>
+            显示当前库信息
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.Precisionf">
+            <summary>
+            浮点数精度工具类
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.MetaData">
+            <summary>
+            元数据类
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.MetaData.LIB_NAME">
+            <summary>
+            算法库名
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.MetaData.SLOGAN">
+            <summary>
+            广告语
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.MetaData.VERSION">
+            <summary>
+            当前版本 Ver.1.0.0 beta 2026.04.10
+            dev 开发中(比如提供空接口)
+            alfa 内部联调
+            beta 外部联调(现场实施)
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.MetaData.COMMENT">
+            <summary> 
+            最新修改：删除业务类算法
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.MetaData.COPY_RIGHT">
+            <summary>
+            版权声明
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.MetaData.GetVersion">
+            <summary>
+            获取库版本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:DotCloudLib.MetaData.MESSAGE">
+            <summary>
+            算法库返回信息
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.Parser">
+            <summary>
+            坐标系转换
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.Parser.GetKeyPoints(GeoLib.CylinderGeometry)">
+            <summary>
+            获取圆柱体关键点全局坐标
+            </summary>
+            <param name="geometry">圆柱体对象</param>
+            <returns>点集</returns>
+        </member>
+        <member name="M:DotCloudLib.Parser.GetKeyPoints(GeoLib.CuboidGeometry)">
+            <summary>
+            获取长方体关键点全局坐标
+            </summary>
+            <param name="geometry"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.UIProcessBar">
+            <summary>
+            进度条
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.UIProcessBar.Left">
+            <summary>
+            光标的列位置。将从 0 开始从左到右对列进行编号。
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.UIProcessBar.Top">
+            <summary>
+            光标的行位置。从上到下，从 0 开始为行编号。
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.UIProcessBar.Width">
+            <summary>
+            进度条宽度。
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.UIProcessBar.Value">
+            <summary>
+            进度条当前值。
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.UIProcessBar.s_backgroundColor">
+            <summary>
+            进度条背景色
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.UIProcessBar.s_foregroundColor">
+            <summary>
+            进度条前景色
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.UIProcessBar.s_fontColor">
+            <summary>
+            进度条文字颜色
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.UIProcessBar.#ctor">
+            <summary>
+            默认构造方法
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.UIProcessBar.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="p_left"></param>
+            <param name="p_top"></param>
+            <param name="p_width"></param>
+        </member>
+        <member name="M:DotCloudLib.UIProcessBar.Display(System.Int32)">
+            <summary>
+            显示
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.UIProcessBar.Display(System.Int32,System.String)">
+            <summary>
+            显示
+            </summary>
+            <param name="value"></param>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.UIProcessBar.Complete">
+            <summary>
+            结束
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.ZXBoundary">
+            <summary>
+            边界——AABB包围盒
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（三维包围盒）
+            </summary>
+            <param name="_minX"></param>
+            <param name="_maxX"></param>
+            <param name="_minY"></param>
+            <param name="_maxY"></param>
+            <param name="_minZ"></param>
+            <param name="_maxZ"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造方法（二维包围盒）
+            </summary>
+            <param name="_minX"></param>
+            <param name="_maxX"></param>
+            <param name="_minY"></param>
+            <param name="_maxY"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.#ctor(System.String,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造函数——有编号的二维包围盒
+            </summary>
+            <param name="_id">编号</param>
+            <param name="_minX">最小X</param>
+            <param name="_maxX">最大X</param>
+            <param name="_minY">最小Y</param>
+            <param name="_maxY">最大Y</param>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.Id">
+            <summary>
+            唯一编码
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MinX">
+            <summary>
+            最小X
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MaxX">
+            <summary>
+            最大X
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MinY">
+            <summary>
+            最小Y
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MaxY">
+            <summary>
+            最大Y
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MinZ">
+            <summary>
+            最小Z
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.MaxZ">
+            <summary>
+            最大Z
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.OX">
+            <summary>
+            中心点X
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.OY">
+            <summary>
+            中心点Y
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.OZ">
+            <summary>
+            中心点Z
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.L">
+            <summary>
+            X方向长
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.W">
+            <summary>
+            Y方向宽
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.H">
+            <summary>
+            Z方向高
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.Area">
+            <summary>
+            平面面积
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.Center">
+            <summary>
+            返回中间点
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.V">
+            <summary>
+            八个角点
+            ^ Y轴
+            |
+            3------2  7------6
+            |      |  |      |
+            |      |  |      |
+            0------1  4------5
+              底部       顶部    -> X轴
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.Min">
+            <summary>
+            最小点（底部左下角坐标）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXBoundary.Max">
+            <summary>
+            最大点（顶部右上角坐标）
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.IsNull(System.Single)">
+            <summary>
+            是否为空 
+            </summary>
+            <param name="p_e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.IsStandard">
+            <summary>
+            是否为标准
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.Normalize">
+            <summary>
+            标准化
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainX(System.Single,System.Boolean)">
+            <summary>
+            X坐标是否在边界内
+            </summary>
+            <param name="_x"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainX(DotCloudLib.ZXBoundary,System.Boolean)">
+            <summary>
+            判定包围盒X方向是否包含
+            </summary>
+            <param name="_b"></param>
+            <param name="_open"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainY(System.Single,System.Boolean)">
+            <summary>
+            Y坐标是否在边界内
+            </summary>
+            <param name="_y"></param>、
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainY(DotCloudLib.ZXBoundary,System.Boolean)">
+            <summary>
+            判定包围盒Y方向是否包含
+            </summary>
+            <param name="_b"></param>
+            <param name="_open"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainZ(System.Single,System.Boolean)">
+            <summary>
+            Z坐标是否在边界内
+            </summary>
+            <param name="_z"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainZ(DotCloudLib.ZXBoundary,System.Boolean)">
+            <summary>
+            判定包围盒Z方向是否包含
+            </summary>
+            <param name="_b"></param>
+            <param name="_open"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.Contain(System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            点坐标是否在边间内（在边界上，视为在边界内）
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.Contain(DotCloudLib.ZXPoint,System.Boolean)">
+            <summary>
+            点坐标是否在边间内（在边界上，视为在边界内）
+            </summary>
+            <param name="_p"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainXY(DotCloudLib.ZXPoint,System.Boolean)">
+            <summary>
+            只考虑二维俯视图包含点坐标
+            </summary>
+            <param name="_p"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainXY(DotCloudLib.ZXBoundary,System.Boolean)">
+            <summary>
+            判定二维包围盒包含
+            </summary>
+            <param name="_b"></param>
+            <param name="_open"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ContainXY(DotCloudLib.ZXSegment,System.Boolean)">
+            <summary>
+            只考虑二维俯视图包含二维线段    by: 杨波
+            </summary>
+            <param name="_l"></param>
+            <param name="_open">开区间</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.Intersect(DotCloudLib.ZXBoundary)">
+            <summary>
+            判断两个包围盒是否有交集(只贴边不算有交集)
+            </summary>
+            <param name="_b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.IntersectXY(DotCloudLib.ZXBoundary)">
+            <summary>
+            判断两个包围盒在XOY平面上是否有交集
+            </summary>
+            <param name="_b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.IntersectXY(DotCloudLib.ZXSegment)">
+            <summary>
+            判断包围盒和二维线段在XOY平面上是否有交集  by: 杨波
+            </summary>
+            <param name="_l"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.CutBy(DotCloudLib.ZXBoundary)">
+            <summary>
+            二维包围盒切割算法：被另一个包围盒切割成两个
+            （仅适用于XOY方向的二维包围盒）
+            默认都是纵切
+            </summary>
+            <param name="_b">切割包围盒</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.CutBy(System.Collections.Generic.List{DotCloudLib.ZXBoundary},System.Single)">
+            <summary>
+            依次被多个包围盒切割，内部迭代调用
+            </summary>
+            <param name="p_bounds">切割包围盒</param>
+            <param name="p_filterY">Y方向大小小于该值时剔除</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.SplitBy(System.Collections.Generic.List{DotCloudLib.ZXBoundary},System.Single)">
+            <summary>
+            被包围盒数组横纵切割
+            </summary>
+            <param name="p_bounds">包围盒数组</param>
+            <param name="p_e">较小值</param>
+            <returns>切割后的包围盒数组</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Addition(DotCloudLib.ZXBoundary,System.Int32)">
+            <summary>
+            包围盒放大一圈
+            </summary>
+            <param name="_b">包围盒</param>
+            <param name="_l">放大幅度(为正)</param>
+            <returns>放大后包围盒</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Addition(DotCloudLib.ZXBoundary,System.Single)">
+            <summary>
+            包围盒放大一圈
+            </summary>
+            <param name="_b">包围盒</param>
+            <param name="_l">放大幅度(为正)</param>
+            <returns>放大后包围盒</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Addition(DotCloudLib.ZXBoundary,DotCloudLib.ZXPoint)">
+            <summary>
+            计算包围盒的空间偏移
+            </summary>
+            <param name="_b">包围盒</param>
+            <param name="_p">偏移三维坐标</param>
+            <returns>偏移后包围盒</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Subtraction(DotCloudLib.ZXBoundary,DotCloudLib.ZXPoint)">
+            <summary>
+            计算包围盒的空间偏移
+            </summary>
+            <param name="_b">包围盒</param>
+            <param name="_p">偏移三维坐标</param>
+            <returns>偏移后包围盒</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Multiply(DotCloudLib.ZXBoundary,DotCloudLib.ZXPoint)">
+            <summary>
+            包围盒按向量抹出去后的整体
+            </summary>
+            <param name="_b0">包围盒</param>
+            <param name="_dir">抹出去的向量</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Subtraction(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            两个包围盒做差
+            </summary>
+            <param name="_bB">大包围盒</param>
+            <param name="_bS">小包围盒</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Addition(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            两个包围盒取并集（小中取小，大中取大）
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_BitwiseOr(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            两个包围盒取并集（小中取小，大中取大）
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_Multiply(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            两个包围盒取交集（小中取大，大中取小）
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_BitwiseAnd(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            两个包围盒取交集（小中取大，大中取小）
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_GreaterThan(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            返回两个包围盒3个方向的大小比较
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.op_LessThan(DotCloudLib.ZXBoundary,DotCloudLib.ZXBoundary)">
+            <summary>
+            返回两个包围盒3个方向的大小比较
+            </summary>
+            <param name="_b0"></param>
+            <param name="_b1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.NearTo(DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            判断两个二维包围盒是否相连
+            </summary>
+            <param name="p_b"></param>
+            <param name="p_e">比较阈值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.IsFlex(DotCloudLib.GraphTheory.INode,DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            判断中间一个二维包围盒是否为拐点
+            </summary>
+            <param name="p_preNode">上一个包围盒</param>
+            <param name="p_nextNode">下一个包围盒</param>
+            <param name="p_e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.Visualize(System.Single)">
+            <summary>
+            【调试用】可视化为点集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ToJsonString">
+            <summary>
+            输出json字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ToCabinString">
+            <summary>
+            按舱型数据格式*.cabin生成字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXBoundary.ToString">
+            <summary>
+            返回边界字符串表示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.ZXPoint">
+            <summary>
+            点坐标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Id">
+            <summary>
+            点坐标的Id
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.X">
+            <summary>
+            X坐标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Y">
+            <summary>
+            Y坐标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Z">
+            <summary>
+            Z坐标
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Alfa">
+            <summary>
+            【备用】alfa值
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Beta">
+            <summary>
+            【备用】beta值
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Gama">
+            <summary>
+            【备用】gama值
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor">
+            <summary>
+            构造原点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(System.Single,System.Single)">
+            <summary>
+            构造二维点
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            构造三维点
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(System.Double,System.Double,System.Double)">
+            <summary>
+            构造三维点  2024.05.11 +
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            构造有空间角度的三维点
+            </summary>
+            <param name="_x">X坐标</param>
+            <param name="_y">Y坐标</param>
+            <param name="_z">Z坐标</param>
+            <param name="_alfa">alfa值</param>
+            <param name="_beta">beta值</param>
+            <param name="_gama">gama值</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(System.String,System.Double,System.Double,System.Double)">
+            <summary>
+            有ID点
+            </summary>
+            <param name="_id"></param>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.#ctor(DotCloudLib.ZXPoint)">
+            <summary>
+            构造方法 —— 深拷贝
+            </summary>
+            <param name="_p"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.IsEmpty(System.Single)">
+            <summary>
+            判别是否为空点 2025.6.30 改 （float.MinValue赋值时，因float小数点后有效位原因，导致空点比预想的大）
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.ComputeAlfa">
+            <summary>
+            根据X,Y坐标，计算Alfa角  → 0° ↑ 90° ← 180° ↓ 270°
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.CompareTo(DotCloudLib.ZXPoint)">
+            <summary>
+            默认比较函数
+            </summary>
+            <param name="other">另一个点</param>
+            <returns>大于 1； 等于 0； 小于 -1；</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.CompareToByZXY(DotCloudLib.ZXPoint)">
+            <summary>
+            比较函数（ZXY顺序排列）
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.CompareToByAlfa(DotCloudLib.ZXPoint)">
+            <summary>
+            比较两个点的 Alfa角 2022.8.5
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.DistanceTo(DotCloudLib.ZXPoint)">
+            <summary>
+            求两点距离
+            </summary>
+            <param name="_p">另一个点</param>
+            <returns>两点距离</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.SquareDistanceTo(DotCloudLib.ZXPoint)">
+            <summary>
+            求两点距离的平方
+            </summary>
+            <param name="_p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.Distance">
+            <summary>
+            点自身距离 2025.10.10 duzixi +
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:DotCloudLib.ZXPoint.Item(System.Int32)">
+            <summary>
+            索引访问
+            </summary>
+            <param name="index">0:X, 1:Y, 2:Z </param>
+            <returns>点坐标分项值</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Addition(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            两点加法重载
+            </summary>
+            <param name="a">第1个点</param>
+            <param name="b">第2个点</param>
+            <returns>两点坐标之和</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_UnaryNegation(DotCloudLib.ZXPoint)">
+            <summary>
+            按原点对称
+            </summary>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Subtraction(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            两点减法重载
+            </summary>
+            <param name="a">第一个点</param>
+            <param name="b">第二个点</param>
+            <returns>第一个点分别减去第二个点</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Multiply(System.Single,DotCloudLib.ZXPoint)">
+            <summary>
+            按原点增倍
+            </summary>
+            <param name="d"></param>
+            <param name="a"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Multiply(DotCloudLib.ZXPoint,System.Single)">
+            <summary>
+            按原点增倍
+            </summary>
+            <param name="a"></param>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Division(DotCloudLib.ZXPoint,System.Single)">
+            <summary>
+            按原点缩短
+            </summary>
+            <param name="a"></param>
+            <param name="d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Equality(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            比较相等 edit by 刘轩名 2025.09
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.op_Inequality(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint)">
+            <summary>
+            判断不相等
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.Equals(System.Object)">
+            <summary>
+            比较相等
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.GetHashCode">
+            <summary>
+            获取哈希值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.ToJsonString">
+            <summary>
+            输出json字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.ToString">
+            <summary>
+            显示点坐标
+            </summary>
+            <returns>点坐标字符串</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.ToString(System.String)">
+            <summary>
+            按格式显示坐标
+            </summary>
+            <param name="p_format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.NearTo(DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            判断两个点是否相邻
+            </summary>
+            <param name="p_node">另一个点</param>
+            <param name="p_e">相邻距离</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.IsFlex(DotCloudLib.GraphTheory.INode,DotCloudLib.GraphTheory.INode,System.Single)">
+            <summary>
+            判断三点是否在一条直线上
+            </summary>
+            <param name="p_preNode"></param>
+            <param name="p_nextNode"></param>
+            <param name="p_e"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPoint.Lerp(DotCloudLib.ZXPoint,System.Double)">
+            <summary>
+            计算两点之间的线性插值 2025.07.17+
+            </summary>
+            <param name="p0"></param>
+            <param name="p1"></param>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DotCloudLib.AxisType">
+            <summary>
+            坐标轴类型
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.AxisType.X">
+            <summary>
+            X坐标轴
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.AxisType.Y">
+            <summary>
+            Y坐标轴
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.AxisType.Z">
+            <summary>
+            Z坐标轴
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.PlaneType">
+            <summary>
+            平面类型
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PlaneType.XOY">
+            <summary>
+            XOY 平面
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PlaneType.YOZ">
+            <summary>
+            YOZ 平面
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PlaneType.XOZ">
+            <summary>
+            XOZ 平面
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.PointFormat">
+            <summary>
+            点格式
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PointFormat.XYZ">
+            <summary>
+            三个坐标，逗号分隔
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PointFormat.IXYZ">
+            <summary>
+            点ID + 三个坐标，逗号分隔
+            </summary>
+        </member>
+        <member name="F:DotCloudLib.PointFormat.JSON">
+            <summary>
+            内部约定JSON格式，具体参见Pile3D接口文档
+            </summary>
+        </member>
+        <member name="T:DotCloudLib.ZXPointSet">
+            <summary>
+            点集
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.#ctor(DotCloudLib.ZXPointSet)">
+            <summary>
+            构造方法——深拷贝
+            开辟新的内存空间，新点云内部点赋值不影响原有点云
+            </summary>
+            <param name="org"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.#ctor(System.String)">
+            <summary>
+            构造方法——默认载入.xyz格式点云数据构造，以前两个点的Y方向偏移为默认unit格网精度
+            创建版本：0.7.6
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.#ctor(System.Collections.Generic.List{DotCloudLib.ZXPoint})">
+            <summary>
+            构造方法——点List 
+            </summary>
+            <param name="points"></param>
+        </member>
+        <member name="F:DotCloudLib.ZXPointSet.Unit">
+            <summary>
+            格网精度
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.LengthN">
+            <summary>
+            X方向格点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.WidthN">
+            <summary>
+            Y方向各点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.Bound">
+            <summary>
+            上一边界（直接取值）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.Boundary">
+            <summary>
+            最新边界（重新计算）
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.PointsList">
+            <summary>
+            返回点坐标List 2025.09.03 +
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromXYZ(System.String)">
+            <summary>
+            载入XYZ格式数据文件
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromIXYZ(System.String)">
+            <summary>
+            载入IXYZ格式点云数据文件
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromXYZABG(System.String,System.UInt32)">
+            <summary>
+            载入XYZ格式数据文件
+            </summary>
+            <param name="filePath"></param>
+            <param name="offset">读值下标偏移</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromIXYZABG(System.String)">
+            <summary>
+            载入IXYZABG格式数据文件
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromPLC(System.String)">
+            <summary>
+            载入PLC时序数据——上海宝钢链斗卸船机
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromPLY(System.String)">
+            <summary>
+            载入PLY格式数据文件  by:杨波
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.LoadFromBin(System.String)">
+            <summary>
+            读取bin文件
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.ReadAsciiLine(System.IO.BinaryReader)">
+            <summary>
+            自定义的辅助方法，用于从二进制文件中读取 ASCII 字符串并忽略末尾的换行符  by:杨波
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsPLY(System.String)">
+            <summary>
+            载入PLY格式数据文件  by:杨波
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.WriteAsciiLine(System.IO.BinaryWriter,System.String)">
+            <summary>
+            自定义的辅助方法，用于向二进制文件中写入 ASCII 字符串并在末尾添加换行符 by:杨波
+            </summary>
+            <param name="writer"></param>
+            <param name="line"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsIXYZ(System.String)">
+            <summary>
+            输出*.ixyz格式点云数据
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsXYZ(System.String,System.Single)">
+            <summary>
+            输出*.xyz格式点云数据
+            </summary>
+            <param name="filePath"></param>
+            <param name="p_minZ">空点基准高度</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsXYZABG(System.String,System.Single)">
+            <summary>
+            输出*.xyz格式点云数据
+            </summary>
+            <param name="filePath"></param>
+            <param name="p_minZ">空点基准高度</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsIXYZABG(System.String,System.Single)">
+            <summary>
+            输出*.xyz格式点云数据
+            </summary>
+            <param name="filePath"></param>
+            <param name="p_minZ">空点基准高度</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsXYZId(System.String)">
+            <summary>
+            输出点坐标及Id
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsJSArray(System.String,System.String)">
+            <summary>
+            输出*.js格式点云文件 var points = [[x,y,z], [x,y,z], .... [x,y,z]];
+            </summary>
+            <param name="filePath"></param>
+            <param name="varName"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsJSObject(System.String,System.String)">
+            <summary>
+            输出 *.js格式点云文件 var points = {  };
+            </summary>
+            <param name="filePath"></param>
+            <param name="varName"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsJson(System.String)">
+            <summary>
+            使用条件：满点阵
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SaveAsBin(System.String)">
+            <summary>
+            保存成bin文件
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.WriteTo(System.IO.FileStream@,System.String)">
+            <summary>
+            写如文件流
+            </summary>
+            <param name="fs"></param>
+            <param name="content"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetFileStream(System.String)">
+            <summary>
+            获取文件流
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.IsFull">
+            <summary>
+            判断是否为满点阵(简单判断方案)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.HasNullPoint">
+            <summary>
+            判断是否有空点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetIndex(System.Int32,System.Int32)">
+            <summary>
+            二维下标转一维下标
+            </summary>
+            <param name="p_i"></param>
+            <param name="p_j"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetIndex(System.Single,System.Single)">
+            <summary>
+            根据点XY坐标获取格网索引
+            </summary>
+            <param name="p_x"></param>
+            <param name="p_y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetIndex(System.Int32,DotCloudLib.Dir)">
+            <summary>
+            获取相邻点格网下标
+            </summary>
+            <param name="p_index"></param>
+            <param name="p_dir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetIndexX(System.Single)">
+            <summary>
+            获取X下标
+            </summary>
+            <param name="p_x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetIndexY(System.Single)">
+            <summary>
+            获取Y下标
+            </summary>
+            <param name="p_y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Get(System.Int32,System.Int32)">
+            <summary>
+            根据二维下标获得点m
+            </summary>
+            <param name="p_i">X方向下标</param>
+            <param name="p_j">Y方向下标</param>
+            <returns>如果index越界，返回极小值点</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetPoint(System.Int32,DotCloudLib.Dir)">
+            <summary>
+            获取相邻格网点
+            </summary>
+            <param name="p_index"></param>
+            <param name="p_dir"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetNearestPoint(System.Int32,System.Int32,System.Int32,DotCloudLib.Dir)">
+            <summary>
+            获取某一方向最近点
+            </summary>
+            <param name="p_i">X格网下标</param>
+            <param name="p_j">Y格网下标</param>
+            <param name="p_r">限制搜索半径</param>
+            <param name="p_dir">方向</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetNearestPoint(DotCloudLib.ZXPointSet)">
+            <summary>
+            求当前点集上与ps最相近的点
+            </summary>
+            <param name="ps">比较点集</param>
+            <returns>最相近的点</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetMidValue(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            根据二维下标获得半径周围高程中值
+            </summary>
+            <param name="_xi"></param>
+            <param name="_yj"></param>
+            <param name="r"></param>
+            <param name="p_n">周边点数阈值，周围点数过少，认为没有参考价值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetContour(System.Single,System.Single)">
+            <summary>
+            返回料堆等高线
+            </summary>
+            <param name="p_h">高度</param>
+            <param name="p_w"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetCrossSection(System.Single)">
+            <summary>
+            获取指定点横截面 
+            创建版本：0.7.6
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetVerticalSection(System.Single)">
+            <summary>
+            获取指定点纵截面
+            创建版本：0.7.6
+            </summary>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Add(System.Single,System.Single,System.Single)">
+            <summary>
+            添加一个点
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Add(System.Double,System.Double,System.Double)">
+            <summary>
+            添加一个点 2029.09.03 + 
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotSegment(DotCloudLib.ZXPoint,DotCloudLib.ZXPoint,System.Single)">
+            <summary>
+            添加点阵线段
+            </summary>
+            <param name="_p0">始点</param>
+            <param name="_p1">终点</param>
+            <param name="_unit">点间距</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotSegmentX(System.Single,System.Single,System.Single)">
+            <summary>
+            在X轴上添加线
+            </summary>
+            <param name="_x0"></param>
+            <param name="_x1"></param>
+            <param name="_unit"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotSegmentY(System.Single,System.Single,System.Single)">
+            <summary>
+            在Y轴上添加线
+            </summary>
+            <param name="_y0"></param>
+            <param name="_y1"></param>
+            <param name="_unit"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotSegmentZ(System.Single,System.Single,System.Single)">
+            <summary>
+            在Z轴上添加线
+            </summary>
+            <param name="_z0"></param>
+            <param name="_z1"></param>
+            <param name="_unit"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotRectOXY(DotCloudLib.ZXPoint,System.Single,System.Single,System.Single)">
+            <summary>
+            添加矩阵点阵
+            </summary>
+            <param name="_pLeftBottom">左下角坐标</param>
+            <param name="_l">X方向长度</param>
+            <param name="_w">Y方向长度</param>
+            <param name="_unit">点间距</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotRectCenter(DotCloudLib.ZXPoint,System.Single,System.Single,System.Single)">
+            <summary>
+            添加矩阵点阵
+            </summary>
+            <param name="_pCenter">中心点坐标</param>
+            <param name="_l">X方向长度</param>
+            <param name="_w">Y方向长度</param>
+            <param name="_unit">点间距</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.AddDotBoundary(DotCloudLib.ZXBoundary,System.Single)">
+            <summary>
+            添加点阵包围盒
+            </summary>
+            <param name="_b">包围盒</param>
+            <param name="_unit">点间距</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.TurnToFull(DotCloudLib.ZXPointSet@,System.Single)">
+            <summary>
+            转换为满点阵（使用条件：格网化）
+            </summary>
+            <param name="psFull"></param>
+            <param name="p_Z">默认为极小值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SetMinZ(System.Single)">
+            <summary>
+            空点填充 2022.11.24 Ver.0.9.2
+            </summary>
+            <param name="p_minZ"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SetX(System.Single)">
+            <summary>
+            所有X坐标归一
+            </summary>
+            <param name="p_x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SetY(System.Single)">
+            <summary>
+            所有Y坐标归一
+            </summary>
+            <param name="p_y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SetZ(System.Single)">
+            <summary>
+            统一高度
+            </summary>
+            <param name="p_Z">统一高度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.DownSample(System.Int32,System.Boolean)">
+            <summary>
+            下采样（N里挑一）
+            </summary>
+            <param name="_n">采样间隔</param>
+            <param name="_changeOrg">是否改变原始点云</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Intercept(DotCloudLib.ZXBoundary,System.Boolean)">
+            <summary>
+            截取包围盒，默认改变原始点云
+            </summary>
+            <param name="_b">包围盒范围</param>
+            <param name="_changeOrg"></param>
+            <returns>截取后点云</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.CutOff(DotCloudLib.ZXBoundary)">
+            <summary>
+            切除指定区域，原点云减少
+            </summary>
+            <param name="_b"></param>
+            <returns>返回被切除部分</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Removal">
+            <summary>
+            去重：XY相同，保留Z最小点
+            使用前提：有序点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.RemovalXYZ">
+            <summary>
+            去重：XYZ相同
+            使用前提：有序点
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.FilterOutlier(System.Single)">
+            <summary>
+            异常点剔除
+            使用前提：格网下采样，非满秩阵
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.RemoveNull">
+            <summary>
+            删除空节点
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.CutApart(System.Single,System.Single)">
+            <summary>
+            从原有点云中取出一段，并更新自身
+            </summary>
+            <param name="_startLocation">起始位置</param>
+            <param name="_endLocation">终止位置</param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.ComputeAlfa">
+            <summary>
+            根据XY坐标计算角度 → 0° ↑ 90° ← 180° ↓ 270°
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Translate(System.Single,System.Single,System.Single)">
+            <summary>
+            平移(会改变自身)
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Translate(System.Double,System.Double,System.Double)">
+            <summary>
+            平移(会改变自身)
+            </summary>
+            <param name="_x"></param>
+            <param name="_y"></param>
+            <param name="_z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Mirror(DotCloudLib.AxisType)">
+            <summary>
+            镜像(改变自身)
+            </summary>
+            <param name="_axis"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Merge(DotCloudLib.ZXPointSet)">
+            <summary>
+            合并另一个点云
+            </summary>
+            <param name="_ps"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Rotate(DotCloudLib.AxisType,System.Single)">
+            <summary>
+            围绕某一个轴旋转(会改变自身)
+            </summary>
+            <param name="_axis">旋转轴：左手螺旋定则</param>
+            <param name="_alpha">旋转角度（单位：角度°）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Update(DotCloudLib.ZXPointSet)">
+            <summary>
+            根据局部点云更新原来格网点云
+            使用条件：标准格网化
+            </summary>
+            <param name="_newPointSet">离散点云</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Blocking(System.Single)">
+            <summary>
+            整块化
+            使用前提：格网化有序点云
+            </summary>
+            <param name="_unit">整块化精度</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Gridding(System.Single,System.Boolean)">
+            <summary>
+            格网化
+            </summary>
+            <param name="_unit">精度</param>
+            <param name="inverse">反向排序 默认为false </param>
+            <returns>格网化后点</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GriddingXYZ(System.Single)">
+            <summary>
+            三维格网化：上下重复点保留
+            </summary>
+            <param name="_unit">精度</param>
+            <returns>格网化后点</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Sort(System.Boolean)">
+            <summary>
+            对点进行排序
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SortByZXY(System.Boolean)">
+            <summary>
+            按ZXY顺序排序
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.SortByAlfa">
+            <summary>
+            按Alfa排序 202
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Sort(System.Comparison{DotCloudLib.ZXPoint})">
+            <summary>
+            排序(任意比较形式)
+            </summary>
+            <param name="comparison">比较方法</param>
+            <returns>排序后的点云</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Dense(System.Single)">
+            <summary>
+            加密（使用条件：按Alfa排序）
+            </summary>
+            <param name="p_d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.RemoveDuplicate(System.Single)">
+            <summary>
+            删除重复点（使用条件：按Alfa排序）
+            </summary>
+            <param name="p_d"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Scale(System.Single,System.Single,System.Single)">
+            <summary>
+            缩放，以圆心为中心缩放点云 2024.04.09 +
+            </summary>
+            <param name="p_rateX"></param>
+            <param name="p_rateY"></param>
+            <param name="p_rateZ"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Intersect(DotCloudLib.ZXPointSet,DotCloudLib.ZXPoint@,DotCloudLib.ZXPoint@,System.Single)">
+            <summary>
+            判断两个点集是否相交
+            </summary>
+            <param name="otherPS">另一个点集</param>
+            <param name="pi">交点</param>
+            <param name="pj">交点</param>
+            <param name="p_d">点距小于该值，视为相交</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Intersect(DotCloudLib.ZXPointSet,System.Single)">
+            <summary>
+            判断两个点集是否相交
+            </summary>
+            <param name="otherPS">另一个点集</param>
+            <param name="p_d">点距小于该值，视为相交</param>
+            <returns></returns>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.Count">
+            <summary>
+            IList：点数
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.IsReadOnly">
+            <summary>
+            IList：是否只读
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXPointSet.Item(System.Int32)">
+            <summary>
+             IList：索引下标取点
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.IndexOf(DotCloudLib.ZXPoint)">
+            <summary>
+             IList：返回点下标
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Insert(System.Int32,DotCloudLib.ZXPoint)">
+            <summary>
+             IList：在指定下标处插入点
+            </summary>
+            <param name="index"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.RemoveAt(System.Int32)">
+            <summary>
+             IList：删除指定下标处点
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Add(DotCloudLib.ZXPoint)">
+            <summary>
+             IList：在List最后添加点
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Clear">
+            <summary>
+             IList：清空List
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Contains(DotCloudLib.ZXPoint)">
+            <summary>
+             IList：判断是否包含点
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.CopyTo(DotCloudLib.ZXPoint[],System.Int32)">
+            <summary>
+             IList：拷贝？？？
+            </summary>
+            <param name="array"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Remove(DotCloudLib.ZXPoint)">
+            <summary>
+             IList：删除点
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.GetEnumerator">
+            <summary>
+             IList：获取枚举器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Expand(System.Int32)">
+            <summary>
+            膨胀
+            </summary>
+            <param name="p_r">膨胀序号半径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Corrosion(System.Int32)">
+            <summary>
+            腐蚀
+            </summary>
+            <param name="p_r">腐蚀序号半径</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.Binarization(System.Func{DotCloudLib.ZXPoint,System.Boolean},System.Boolean)">
+            <summary>
+            二值化
+            </summary>
+            <param name="condition">二值化条件</param>
+            <param name="isNegativeRemain">是否保留0</param>
+            <returns></returns>
+        </member>
+        <member name="M:DotCloudLib.ZXPointSet.ToString">
+            <summary>
+            显示点云信息
+            </summary>
+            <returns>点坐标字符串</returns>
+        </member>
+        <member name="T:DotCloudLib.ZXTimer">
+            <summary>
+            计时器
+            </summary>
+        </member>
+        <member name="P:DotCloudLib.ZXTimer.Name">
+            <summary>
+            计时器名
+            </summary>
+        </member>
+        <member name="M:DotCloudLib.ZXTimer.#ctor(System.String)">
+            <summary>
+            构造方法——计时开始
+            </summary>
+            <param name="p_name"></param>
+        </member>
+        <member name="M:DotCloudLib.ZXTimer.End">
+            <summary>
+            结束计时
+            </summary>
+            <returns>总用时（毫秒）</returns>
+        </member>
+        <member name="M:DotCloudLib.ZXTimer.ToString">
+            <summary>
+            显示
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CreateImage.HeatPecker">
+            <summary>
+            高程颜色选择
+            </summary>
+        </member>
+        <member name="F:CreateImage.HeatPecker.AUTO">
+            <summary>
+            自动
+            </summary>
+        </member>
+        <member name="F:CreateImage.HeatPecker.MANUAL">
+            <summary>
+            手动设置，此时使用ImageCreator.MaxZ和ImageCreator.MinZ
+            </summary>
+        </member>
+        <member name="T:CreateImage.ImageCreator">
+            <summary>
+            图片生成器
+            </summary>
+        </member>
+        <member name="F:CreateImage.ImageCreator.MaxZ">
+            <summary>
+            设定值：高程图最高高度（默认25米）
+            </summary>
+        </member>
+        <member name="F:CreateImage.ImageCreator.MaxH">
+            <summary>
+            设定值：最高值对应的HSV颜色 H值
+            </summary>
+        </member>
+        <member name="M:CreateImage.ImageCreator.Contour(DotCloudLib.DotPileLine,System.String,System.Boolean)">
+            <summary>
+            生成料条等高线图片
+            </summary>
+            <param name="pileLine"></param>
+            <param name="_filePath"></param>
+            <param name="_addInfo"></param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.Contour(DotCloudLib.DotPile,System.String,System.Boolean)">
+            <summary>
+            等高线
+            </summary>
+            <param name="pile">料型</param>
+            <param name="_filePath">点云文件路径</param>
+            <param name="_addInfo">图片附加信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.Contour(System.String,DotCloudLib.PointFormat,System.Boolean)">
+            <summary>
+            等高线
+            </summary>
+            <param name="_filePath">原始格网化点云文件路径</param>
+            <param name="_format">点格式</param>
+            <param name="_addInfo">图片附加信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.GrayColor(DotCloudLib.DotPileLine,System.String,System.Boolean)">
+            <summary>
+            生成低精度灰度压缩图（料条DotPileLine）
+            </summary>
+            <param name="pileLine">料条</param>
+            <param name="_filePath">原始格网化点云文件路径</param>
+            <param name="_addInfo">图片附加信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.GrayColor(DotCloudLib.DotPile,System.String,System.Boolean)">
+            <summary>
+            生成低精度灰度压缩图（料堆DotPile）
+            </summary>
+            <param name="pile">料堆</param>
+            <param name="_filePath">原始格网化点云文件路径</param>
+            <param name="_addInfo">图片附加信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.GrayColor(System.String,DotCloudLib.PointFormat,System.Boolean)">
+            <summary>
+            生成低精度灰度压缩图（点云xyz文本文件）
+            </summary>
+            <param name="_filePath">原始格网化点云文件路径</param>
+            <param name="_format">点格式</param>
+            <param name="_addInfo">图片附加信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.HeatColor(DotCloudLib.ZXPointSet)">
+            <summary>
+            任意点云生成高程图  2024.04.11
+            </summary> 
+            <param name="ps">任意点云</param>
+            <returns>高程图</returns>
+        </member>
+        <member name="M:CreateImage.ImageCreator.HeatColor_Center(DotCloudLib.ZXPointSet,DotCloudLib.ZXPoint,System.Int32,System.Int32,System.Single)">
+            <summary>
+            中心对齐的高程图
+            </summary>
+            <param name="ps">点云</param>
+            <param name="center">点云中需要与图像中心对齐的点坐标。若center为null，则默认将电源中心与图像中心对齐</param>
+            <param name="imgW">目标图像高度 - 对应点云y方向</param>
+            <param name="imgH">目标图像宽度 - 对应点云x方向</param>
+            <param name="scale">每scale米一个像素点</param>
+            <returns></returns>
+        </member>
+        <member name="M:CreateImage.ImageCreator.HeatColor(DotCloudLib.DotPileLine,System.String,System.Boolean)">
+            <summary>
+            生成热力图高程着色(料条 DotPileLine)
+            </summary>
+            <param name="pileLine">料条</param>
+            <param name="_filePath">点云文件路径</param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.HeatColor(DotCloudLib.DotPile,System.String,System.Boolean)">
+            <summary>
+            生成热力图高程着色(料堆DotPile)
+            </summary>
+            <param name="pile">料堆</param>
+            <param name="_filePath">点云文件路径</param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.HeatColor(System.String,DotCloudLib.PointFormat,System.Boolean)">
+            <summary>
+            生成热力图高程着色(点云文本文件)
+            </summary>
+            <param name="_filePath"></param>
+            <param name="_format"></param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.TrueColor(DotCloudLib.DotPileLine,System.String,System.Boolean)">
+            <summary>
+            生成高精度真彩色压缩图(料条 DotPileLine)
+            </summary>
+            <param name="pileLine">料条</param>
+            <param name="_filePath">点云文件路径</param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.TrueColor(DotCloudLib.DotPile,System.String,System.Boolean)">
+            <summary>
+            生成高精度真彩色压缩图（料堆 DotPile）
+            </summary>
+            <param name="pile">料堆</param>
+            <param name="_filePath">点云文件路径</param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.TrueColor(System.String,DotCloudLib.PointFormat,System.Boolean)">
+            <summary>
+            生成高精度真彩色压缩图（格网料堆点云文件）
+            </summary>
+            <param name="_filePath"></param>
+            <param name="_format"></param>
+            <param name="_addInfo">图片是否添加辅助信息</param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.NormalMap(DotCloudLib.DotPileLine,System.String)">
+            <summary>
+            生成法线贴图*.jpg（料条 DotPileLine）
+            </summary>
+            <param name="_filePath"></param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.NormalMap(DotCloudLib.DotPile,System.String)">
+            <summary>
+            生成法线贴图*.jpg（料堆 DotPile）
+            </summary>
+            <param name="_filePath"></param>
+            <param name="_format"></param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.NormalMap(System.String,DotCloudLib.PointFormat)">
+            <summary>
+            生成法线贴图*.jpg（料堆格网点云文本文件）
+            </summary>
+            <param name="_filePath"></param>
+            <param name="_format"></param>
+        </member>
+        <member name="M:CreateImage.ImageCreator.AddPileLineInfoToPng(System.String,DotCloudLib.DotPileLine,System.Double,System.String)">
+            <summary>
+            给指定料条图片添加信息头
+            </summary>
+            <param name="_filePath"></param>
+            <param name="_pileLine"></param>
+            <param name="_maxZ"></param>
+            <param name="_colorStyle"></param>
+        </member>
+    </members>
+</doc>
